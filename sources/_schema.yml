@@ -1,0 +1,188 @@
+# Schema for source YAML files in sources/
+# Every source in sources/{slug}.yml must conform to this schema.
+# Run tools/validate.py to check a file against this schema.
+
+schema_version: "1.0"
+
+fields:
+
+  # === Identity (required) ===
+
+  name:
+    type: string
+    required: true
+    description: Display name of the job source (how it's typically referred to)
+    example: Jobs.ch
+
+  slug:
+    type: string
+    required: true
+    pattern: "^[a-z0-9][a-z0-9_-]*$"
+    description: Machine-readable identifier. Must match the filename (without .yml). Lowercase alphanumeric, hyphens and underscores.
+    example: jobs-ch
+
+  url:
+    type: string
+    required: true
+    format: url
+    description: Canonical homepage or job-search landing URL
+    example: https://www.jobs.ch
+
+  # === Coverage (required) ===
+
+  countries:
+    type: array
+    required: true
+    items: string
+    pattern: "^[A-Z]{2}$"
+    description: ISO 3166-1 alpha-2 country codes. Use ["*"] for global/unrestricted.
+    example: [CH]
+
+  languages:
+    type: array
+    required: true
+    items: string
+    pattern: "^[a-z]{2}$"
+    description: ISO 639-1 language codes for listings available on the source
+    example: [de, fr, it, en]
+
+  focus:
+    type: enum
+    required: true
+    values: [general, tech, remote, sector, aggregator]
+    description: |
+      Primary focus of the source.
+      - general: broad coverage across industries
+      - tech: predominantly tech / engineering roles
+      - remote: predominantly remote-friendly roles
+      - sector: specific sector (e.g. humanitarian, public)
+      - aggregator: aggregates postings from other sources
+    example: general
+
+  # === Access (required) ===
+
+  access_type:
+    type: enum
+    required: true
+    values: [api, rss, scrape, hybrid]
+    description: |
+      How listings are pulled from the source.
+      - api: official public or partner API
+      - rss: RSS/Atom feed
+      - scrape: HTML scraping (no structured endpoint)
+      - hybrid: mix of API + scraping
+    example: api
+
+  api_docs_url:
+    type: string
+    required: false
+    format: url
+    description: Official API or feed documentation URL (if applicable)
+    example: https://jobs.ch/api/docs
+
+  requires_auth:
+    type: boolean
+    required: true
+    description: Whether access requires authentication (API key, OAuth, login, etc.)
+    example: true
+
+  auth_type:
+    type: enum
+    required: false
+    values: [api_key, oauth, token, cookie, none]
+    description: Type of authentication required (only if requires_auth is true)
+    example: api_key
+
+  # === Operational (required) ===
+
+  kitsuno_status:
+    type: enum
+    required: true
+    values: [active, inactive, wishlist]
+    description: |
+      Status in Kitsuno's production crawl.
+      - active: currently crawled and producing results
+      - inactive: integrated but disabled (e.g. returned zero jobs, deprecated)
+      - wishlist: known source we plan to integrate; not yet crawled
+    example: active
+
+  license_posture:
+    type: enum
+    required: true
+    values: [aggregator-friendly, neutral, restricted, hostile, unknown]
+    description: |
+      How the source's ToS treats automated aggregation.
+      - aggregator-friendly: ToS explicitly allows aggregation, or source offers partner API
+      - neutral: ToS silent on aggregation; reasonable crawling typically tolerated
+      - restricted: ToS restricts automated access or requires permission
+      - hostile: ToS explicitly prohibits aggregation / scraping
+      - unknown: ToS not reviewed (should trigger a research task)
+    example: aggregator-friendly
+
+  terms_url:
+    type: string
+    required: false
+    format: url
+    description: Link to the source's terms of service or partner terms
+    example: https://www.jobs.ch/en/terms/
+
+  # === Optional but useful ===
+
+  update_frequency:
+    type: enum
+    required: false
+    values: [realtime, hourly, daily, weekly, monthly, unknown]
+    description: How often the source's listings update
+    example: hourly
+
+  estimated_volume:
+    type: integer
+    required: false
+    description: Order-of-magnitude estimate of active postings at any time. Leave blank if unknown.
+    example: 50000
+
+  rate_limits:
+    type: string
+    required: false
+    description: Free-text description of rate limits in effect
+    example: "10 req/sec, 100k req/day with API key"
+
+  notes:
+    type: string
+    required: false
+    description: |
+      Free-form notes on real-world crawl experience. This is where irreplaceable
+      wisdom lives: what breaks, what's stale, regional quirks, pagination gotchas.
+      Honest observations preferred over marketing language.
+    example: |
+      Strong CH coverage including FR/IT cantons. Italian listings sparse outside
+      Ticino. API returns HTTP 429 aggressively past 10 req/sec; implement backoff.
+
+  last_verified:
+    type: date
+    required: true
+    format: YYYY-MM-DD
+    description: Date someone last confirmed the information in this file is accurate
+    example: 2026-04-23
+
+  # === Optional identity extensions ===
+
+  aliases:
+    type: array
+    required: false
+    items: string
+    description: Alternative names or former names this source has been known by
+    example: [jobs.ch, jobscout-jobs-ch]
+
+  operator:
+    type: string
+    required: false
+    description: Company or organization operating the source
+    example: JobCloud AG
+
+  headquartered_in:
+    type: string
+    required: false
+    pattern: "^[A-Z]{2}$"
+    description: ISO 3166-1 alpha-2 country code where the operator is headquartered
+    example: CH

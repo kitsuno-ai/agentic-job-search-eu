@@ -1,0 +1,30 @@
+name: DevITjobs FR
+slug: devitjobs-fr
+url: https://devitjobs.fr
+
+countries: [FR]
+languages: [en, fr]
+focus: tech
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+estimated_volume: 2000
+
+rate_limits: |
+  No documented API. Static-style site tolerates conservative crawling.
+
+notes: |
+  French edition of the DevITjobs family. Paris-dominant but with growing
+  Lyon, Toulouse, Marseille coverage. Tech stack tags are explicit. Many
+  listings target EU-relocation-friendly talent — English listings outnumber
+  French ones for the larger tech-forward companies. Salary disclosure is
+  improving but still less frequent than on UK/DE DevITjobs siblings.
+
+last_verified: 2026-04-23
+
+aliases: [devitjobs_fr]

@@ -1,0 +1,34 @@
+name: The Muse
+slug: themuse
+url: https://www.themuse.com
+
+countries: ["*"]
+languages: [en]
+focus: general
+
+access_type: api
+api_docs_url: https://www.themuse.com/developers/api/v2
+requires_auth: false
+auth_type: api_key
+terms_url: https://www.themuse.com/about/terms
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+estimated_volume: 30000
+
+rate_limits: |
+  Public API with free API-key access. Rate-limited per key; pagination via
+  page parameter.
+
+notes: |
+  US-headquartered but increasingly global. Strong on tech, product, media,
+  and professional services. Company profiles include culture content
+  (photos, values statements, employee quotes) that is rare on standard
+  job boards. European listings are present but secondary — US and remote
+  dominate the feed. Category and level filters are reliable.
+
+last_verified: 2026-04-23
+
+operator: The Muse
+headquartered_in: US

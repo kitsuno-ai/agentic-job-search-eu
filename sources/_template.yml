@@ -1,0 +1,40 @@
+# Copy this file to sources/{your-slug}.yml and fill it in.
+# Required fields are marked with REQUIRED.
+# Delete the comments before committing.
+
+name: # REQUIRED. Display name, e.g. "Jobs.ch"
+slug: # REQUIRED. Matches the filename without .yml. Kebab-case, lowercase.
+url: # REQUIRED. Canonical homepage URL.
+
+# Coverage
+countries: [] # REQUIRED. Array of ISO 3166-1 alpha-2 codes. Use ["*"] for global.
+languages: [] # REQUIRED. Array of ISO 639-1 codes.
+focus: # REQUIRED. One of: general | tech | remote | sector | aggregator
+
+# Access
+access_type: # REQUIRED. One of: api | rss | scrape | hybrid
+api_docs_url: # Optional. URL to official API docs.
+requires_auth: # REQUIRED. true or false.
+auth_type: # Optional. One of: api_key | oauth | token | cookie | none
+
+# Operational
+kitsuno_status: wishlist # REQUIRED. One of: active | inactive | wishlist
+license_posture: unknown # REQUIRED. One of: aggregator-friendly | neutral | restricted | hostile | unknown
+terms_url: # Optional but strongly encouraged.
+
+# Extras
+update_frequency: # Optional. One of: realtime | hourly | daily | weekly | monthly | unknown
+estimated_volume: # Optional. Order-of-magnitude active posting count.
+rate_limits: # Optional. Free-text description.
+
+notes: |
+  # Optional but extremely valuable.
+  # Write what you've learned from actual use: regional quirks, rate limits,
+  # stale fields, pagination gotchas, anything that isn't in the API docs.
+
+last_verified: # REQUIRED. YYYY-MM-DD. When you last confirmed this info is accurate.
+
+# Optional metadata
+# aliases: []
+# operator:
+# headquartered_in:

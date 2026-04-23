@@ -1,0 +1,39 @@
+name: Indeed
+slug: indeed
+url: https://www.indeed.com
+
+countries: ["*"]
+languages: [en, de, fr, es, it, nl, pt, pl, ro, sv, "no", da, fi]
+focus: aggregator
+
+access_type: hybrid
+api_docs_url: https://docs.indeed.com/
+requires_auth: true
+auth_type: api_key
+terms_url: https://www.indeed.com/legal
+
+kitsuno_status: active
+license_posture: restricted
+update_frequency: hourly
+estimated_volume: 30000000
+
+rate_limits: |
+  Official APIs (Publisher / Employer) are tightly gated. Partner agreements
+  required for large-scale access. Unofficial crawling via JobSpy and similar
+  tools works but violates ToS — use at your own risk.
+
+notes: |
+  The largest job aggregator globally, with country-specific domains
+  (indeed.de, indeed.fr, indeed.co.uk, etc.). Publisher API access has been
+  progressively restricted since 2019 and is largely unavailable to new
+  aggregators. Most modern crawlers access Indeed through the JobSpy library
+  or browser-automation layers — both are ToS-restricted and can be blocked.
+  Results include user-generated company reviews and apply-redirect behavior
+  that complicates extraction. For EU-specific coverage, national public
+  employment services (francetravail, platsbanken, nav, arbeitsagentur) are
+  generally cleaner sources with better license posture.
+
+last_verified: 2026-04-23
+
+operator: Indeed Inc. (subsidiary of Recruit Holdings)
+headquartered_in: US

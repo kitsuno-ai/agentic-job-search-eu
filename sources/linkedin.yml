@@ -1,0 +1,38 @@
+name: LinkedIn
+slug: linkedin
+url: https://www.linkedin.com/jobs
+
+countries: ["*"]
+languages: [en, de, fr, es, it, nl, pt, pl, ro, sv, "no", da, fi, ja, zh]
+focus: aggregator
+
+access_type: hybrid
+requires_auth: true
+auth_type: cookie
+terms_url: https://www.linkedin.com/legal/user-agreement
+
+kitsuno_status: active
+license_posture: hostile
+update_frequency: realtime
+estimated_volume: 10000000
+
+rate_limits: |
+  LinkedIn actively detects and blocks automated access. No public job-search
+  API for third parties. Any scraping approach should assume hostile rate
+  limiting, IP-level blocks, and account restrictions.
+
+notes: |
+  LinkedIn's job board is enormous but aggressively defended against
+  aggregation. The official Marketing Developer Platform and Talent Solutions
+  APIs do not expose job-search functionality to third parties. Community
+  tools (JobSpy, linkedin-jobs-scraper) exist but violate the ToS and carry
+  real risk of account suspension. Listings that surface via authenticated
+  sessions are rich in structured data (applicants count, required skills,
+  company size) but this is exactly the data LinkedIn considers proprietary.
+  For production use, consider whether the ToS risk is acceptable; many EU
+  aggregators deliberately avoid LinkedIn as a source for this reason.
+
+last_verified: 2026-04-23
+
+operator: LinkedIn Corporation (subsidiary of Microsoft)
+headquartered_in: US

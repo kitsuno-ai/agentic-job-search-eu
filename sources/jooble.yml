@@ -1,0 +1,36 @@
+name: Jooble
+slug: jooble
+url: https://jooble.org
+
+countries: ["*"]
+languages: [en, de, fr, es, it, nl, pl, ro, sv, "no", da, fi, uk, ru]
+focus: aggregator
+
+access_type: api
+api_docs_url: https://jooble.org/api/about
+requires_auth: true
+auth_type: api_key
+terms_url: https://jooble.org/terms
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+estimated_volume: 15000000
+
+rate_limits: |
+  Partner API with per-key limits. Free tier available for low-volume
+  evaluation. Production quotas require partner agreement.
+
+notes: |
+  Jooble is an aggregator-of-aggregators covering 65+ countries via
+  country-specific endpoints. Data quality varies sharply by country — Eastern
+  European and Nordic coverage is reasonable, Western European coverage
+  duplicates what you'd get from Indeed + local boards. Listings are
+  snippets, not full postings — the full description is always at the
+  redirect URL. Duplicate handling across Jooble and underlying sources
+  is your problem. Useful mainly as a fallback for countries where you
+  don't have a direct national source.
+
+last_verified: 2026-04-23
+
+operator: Jooble

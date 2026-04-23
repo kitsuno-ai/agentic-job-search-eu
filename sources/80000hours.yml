@@ -1,0 +1,33 @@
+name: 80,000 Hours Job Board
+slug: 80000hours
+url: https://jobs.80000hours.org
+
+countries: ["*"]
+languages: [en]
+focus: sector
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+terms_url: https://80000hours.org/about/credits/
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: weekly
+estimated_volume: 1000
+
+rate_limits: |
+  No documented API. Low volume means conservative scraping is never stressed.
+
+notes: |
+  Curated job board from 80,000 Hours, focused on "high-impact" careers across
+  AI safety, biosecurity, effective altruism-aligned organizations, policy,
+  global health, and existential-risk research. Listings are hand-curated by
+  the 80k team — quality is high, volume is low. Categories include things
+  you won't find elsewhere ("AI governance", "pandemic preparedness policy").
+  Global but the employer base is Anglophone-concentrated (US, UK, some EU).
+
+last_verified: 2026-04-23
+
+operator: 80,000 Hours
+headquartered_in: GB

@@ -1,0 +1,32 @@
+name: DevJob.ro
+slug: devjob-ro
+url: https://devjob.ro
+
+countries: [RO]
+languages: [ro, en]
+focus: tech
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+estimated_volume: 2500
+
+rate_limits: |
+  No documented API. HTML scrape well tolerated at conservative pace.
+
+notes: |
+  Romania-focused IT board. Bucharest-dominant with Cluj-Napoca, Iași, and
+  Timișoara as secondary hubs. Listings are mostly Romanian-language with
+  English listings concentrated in outsourcing consultancies and product
+  companies. Salary disclosure is moderate — more common on senior positions.
+  Contract type (normă întreagă / part-time / freelance / PFA) is usually
+  explicit.
+
+last_verified: 2026-04-23
+
+aliases: [devjob_ro]
+headquartered_in: RO

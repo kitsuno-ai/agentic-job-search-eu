@@ -1,0 +1,30 @@
+name: Working Nomads
+slug: working-nomads
+url: https://www.workingnomads.com
+
+countries: ["*"]
+languages: [en]
+focus: remote
+
+access_type: api
+api_docs_url: https://www.workingnomads.com/api/exposed_jobs/
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+estimated_volume: 2500
+
+rate_limits: |
+  Public JSON endpoint. Conservative pacing recommended.
+
+notes: |
+  Digital-nomad oriented remote board. Lower volume than RemoteOK / Remotive
+  but listings are often more senior and cross-functional. Strong coverage
+  of operations, content, and product roles alongside engineering. Category
+  taxonomy is coarser than Remotive.
+
+last_verified: 2026-04-23
+
+aliases: [working_nomads, workingnomads]

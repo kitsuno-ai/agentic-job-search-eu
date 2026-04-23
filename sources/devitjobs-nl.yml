@@ -1,0 +1,31 @@
+name: DevITjobs NL
+slug: devitjobs-nl
+url: https://devitjobs.nl
+
+countries: [NL]
+languages: [en, nl]
+focus: tech
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+estimated_volume: 2000
+
+rate_limits: |
+  No documented API. Static-style site tolerates conservative crawling.
+
+notes: |
+  Netherlands edition of the DevITjobs family. Amsterdam-heavy with significant
+  Utrecht, Rotterdam, and Eindhoven coverage. Most listings are English even
+  for Dutch-headquartered companies — reflective of the Dutch tech sector's
+  English-default norm. Salary ranges disclosed more reliably than on
+  generalist Dutch boards. Work visa / 30% ruling eligibility is often called
+  out explicitly.
+
+last_verified: 2026-04-23
+
+aliases: [devitjobs_nl]

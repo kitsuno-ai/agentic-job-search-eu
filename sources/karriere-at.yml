@@ -1,0 +1,28 @@
+name: Karriere.at
+slug: karriere-at
+url: https://www.karriere.at
+
+countries: [AT]
+languages: [de, en]
+focus: general
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+terms_url: https://www.karriere.at/bedingungen
+
+kitsuno_status: wishlist
+license_posture: restricted
+
+notes: |
+  Austria's largest general job board. Austrian coverage is currently thin
+  in the active sources (Adzuna and Arbeitnow cover AT but as secondary
+  markets). Karriere.at would add authoritative DACH-Austria coverage
+  especially outside Vienna. No public aggregation API. ToS restricts
+  automated access. On the wishlist.
+
+last_verified: 2026-04-23
+
+operator: karriere.at GmbH
+headquartered_in: AT
+aliases: [karriere_at, karriere.at]

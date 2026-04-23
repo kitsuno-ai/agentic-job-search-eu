@@ -1,0 +1,29 @@
+name: Jobindex
+slug: jobindex
+url: https://www.jobindex.dk
+
+countries: [DK]
+languages: [da, en]
+focus: general
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+terms_url: https://www.jobindex.dk/cmsbetingelser
+
+kitsuno_status: wishlist
+license_posture: restricted
+
+notes: |
+  Denmark's dominant general job board. Strong private-sector coverage with
+  some aggregation of public-sector roles. No public API for job search;
+  listings are accessible via HTML pagination but ToS restricts automated
+  access. On the wishlist because Denmark coverage is currently thin —
+  NAV (Norway) and Platsbanken (Sweden) handle the other Nordics well, and
+  integrating Jobindex would close the gap. Not yet pursued pending clarity
+  on partnership / data-access options.
+
+last_verified: 2026-04-23
+
+operator: Jobindex A/S
+headquartered_in: DK

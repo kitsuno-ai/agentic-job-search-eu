@@ -1,0 +1,29 @@
+name: StepStone
+slug: stepstone
+url: https://www.stepstone.de
+
+countries: [AT, BE, DE, NL]
+languages: [de, nl, en]
+focus: general
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+terms_url: https://www.stepstone.de/e-recruiting/ueber-stepstone/agb/
+
+kitsuno_status: wishlist
+license_posture: restricted
+
+notes: |
+  One of the largest general job boards in DACH, especially strong for
+  Germany and Austria. No public API documented for job aggregation.
+  Listings are accessible via HTML but ToS restricts automated access —
+  any integration requires either a partner agreement or extreme care
+  on crawl rate and user-agent transparency. On the wishlist because
+  DACH coverage would be materially improved by integrating StepStone;
+  not yet pursued pending ToS/partnership clarification.
+
+last_verified: 2026-04-23
+
+operator: StepStone GmbH
+headquartered_in: DE

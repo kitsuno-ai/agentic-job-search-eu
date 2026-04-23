@@ -1,0 +1,31 @@
+name: Remotive
+slug: remotive
+url: https://remotive.com
+
+countries: ["*"]
+languages: [en]
+focus: remote
+
+access_type: api
+api_docs_url: https://remotive.com/api-documentation
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+estimated_volume: 3000
+
+rate_limits: |
+  Public JSON endpoint. No documented rate limit. Single JSON payload
+  contains current listings.
+
+notes: |
+  Curated remote-work board with lighter volume but higher average quality
+  than RemoteOK. Each listing includes job type (full-time / freelance /
+  contract / internship), salary range when available, and explicit region
+  restrictions. Categories are cleaner than RemoteOK (software, product,
+  marketing, etc.) which helps with filtering. Operator curates listings
+  manually, so turnover is lower — same jobs can persist for weeks.
+
+last_verified: 2026-04-23

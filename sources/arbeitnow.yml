@@ -1,0 +1,34 @@
+name: Arbeitnow
+slug: arbeitnow
+url: https://www.arbeitnow.com
+
+countries: [AT, BE, CH, DE, DK, ES, FI, FR, IE, IT, NL, "NO", PL, PT, SE, GB]
+languages: [en, de]
+focus: remote
+
+access_type: api
+api_docs_url: https://documenter.getpostman.com/view/18545278/UVJbJdKh
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+estimated_volume: 30000
+
+rate_limits: |
+  No authenticated rate limit documented. Conservative pacing recommended
+  (1-2 req/sec). Supports pagination via ?page= parameter.
+
+notes: |
+  EU-focused board with strong emphasis on remote and relocation-friendly
+  roles, particularly tech. Listings are mostly English-language even for
+  DACH-headquartered companies. "Remote" tags reliable; "relocation offered"
+  tags less so — verify against the posting URL. Descriptions are complete
+  (not teasers), which is rare for aggregators. Company data is thin —
+  expect just name + website in most cases.
+
+last_verified: 2026-04-23
+
+operator: Arbeitnow GmbH
+headquartered_in: DE

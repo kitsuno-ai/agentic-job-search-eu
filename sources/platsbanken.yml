@@ -1,0 +1,38 @@
+name: Platsbanken
+slug: platsbanken
+url: https://arbetsformedlingen.se/platsbanken
+
+countries: [SE]
+languages: [sv, en]
+focus: general
+
+access_type: api
+api_docs_url: https://jobtechdev.se/
+requires_auth: false
+auth_type: none
+terms_url: https://jobtechdev.se/sv/villkor
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: realtime
+estimated_volume: 150000
+
+rate_limits: |
+  JobTech Dev is Sweden's open-data initiative for job data. Generous free
+  access with reasonable rate limits; production use may warrant a registered
+  client. Historical snapshots also available.
+
+notes: |
+  Swedish public employment service. Authoritative feed for Swedish vacancies
+  via the Jobtech Dev open-data platform — likely the cleanest public-sector
+  job API in Europe. Listings use standardized SSYK occupation codes
+  (Swedish equivalent of ISCO). Both Swedish and English descriptions are
+  common for tech/science roles; generalist listings default to Swedish. Full
+  text of listings is provided — no need to follow URLs for description. ROME
+  and ESCO crosswalks exist for SSYK codes.
+
+last_verified: 2026-04-23
+
+operator: Arbetsförmedlingen
+headquartered_in: SE
+aliases: [arbetsformedlingen, jobtech]

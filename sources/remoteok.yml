@@ -1,0 +1,35 @@
+name: RemoteOK
+slug: remoteok
+url: https://remoteok.com
+
+countries: ["*"]
+languages: [en]
+focus: remote
+
+access_type: api
+api_docs_url: https://remoteok.com/api
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+estimated_volume: 5000
+
+rate_limits: |
+  Public JSON endpoint. No documented rate limit; conservative pacing
+  recommended. Single JSON payload contains all current listings (no
+  pagination required).
+
+notes: |
+  Remote-first job board skewed toward tech, design, and marketing. Listings
+  are short and tag-rich — tech stack, region restrictions ("USA-only",
+  "EU-timezone"), and remote type (fully remote vs. hybrid) are well
+  structured. Single JSON response makes crawling trivially cheap — no
+  pagination state to maintain. Employer validation is light, so occasional
+  low-quality listings slip through. Operated by Pieter Levels, long-standing
+  fixture of the remote-work community.
+
+last_verified: 2026-04-23
+
+operator: Pieter Levels

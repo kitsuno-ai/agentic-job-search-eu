@@ -1,0 +1,35 @@
+name: ReliefWeb Jobs
+slug: reliefweb
+url: https://reliefweb.int/jobs
+
+countries: ["*"]
+languages: [en, fr, es]
+focus: sector
+
+access_type: api
+api_docs_url: https://reliefweb.int/help/api
+requires_auth: false
+auth_type: none
+terms_url: https://reliefweb.int/terms-conditions
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+estimated_volume: 4000
+
+rate_limits: |
+  Public API, no authentication required, generous rate limits. Identify
+  your consumer via the appname parameter (recommended but not enforced).
+
+notes: |
+  ReliefWeb is the UN Office for the Coordination of Humanitarian Affairs
+  (OCHA) information service. The jobs feed aggregates postings from UN
+  agencies (UNDP, UNICEF, WHO, OHCHR etc.), major INGOs (Save the Children,
+  MSF, IRC, Oxfam), and Red Cross/Red Crescent movements. Listings are
+  well-structured with career-category taxonomy, theme tags, country and
+  city fields, and closing dates. Descriptions are often long and formatted.
+  Genuinely unique niche — no other source catalogs this sector as cleanly.
+
+last_verified: 2026-04-23
+
+operator: UN OCHA

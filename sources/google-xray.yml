@@ -1,0 +1,41 @@
+name: Google X-ray (ATS meta-source)
+slug: google-xray
+url: https://www.google.com
+
+countries: ["*"]
+languages: [en, de, fr, es, it, nl, pt, pl, ro, sv, "no", da, fi]
+focus: aggregator
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: restricted
+update_frequency: daily
+estimated_volume: 1000000
+
+rate_limits: |
+  Google Search enforces aggressive rate limiting on automated queries.
+  Realistic pacing is measured in tens of seconds per query, not
+  queries-per-second. Residential proxies or custom-search-API access
+  typically required for production scale.
+
+notes: |
+  Not a job board itself — this entry documents the "Google X-ray" technique
+  of using site-scoped search queries to find postings on the 22 major
+  Applicant Tracking System (ATS) platforms that host company career pages
+  directly. Covered ATS platforms include: Greenhouse, Lever, Ashby, Workable,
+  Workday, SmartRecruiters, Personio, Teamtailor, BambooHR, Jobvite, iCIMS,
+  Taleo, SuccessFactors, Eightfold, Recruitee, Breezy, JazzHR, Zoho Recruit,
+  Bullhorn, UKG, Recruiterflow, and Polymer. Each ATS hosts many employers
+  behind predictable URL patterns (e.g. `boards.greenhouse.io/<company>`),
+  which makes site-scoped Google queries surprisingly effective for reaching
+  listings that never appear on aggregators. Downside: you're scraping
+  Google, which is restricted, rate-limited, and brittle. Upside: coverage
+  extends to employers that explicitly avoid job boards as a channel. A
+  future v2 of this directory may split each ATS into its own entry.
+
+last_verified: 2026-04-23
+
+aliases: [google_xray, google-x-ray, ats-xray]

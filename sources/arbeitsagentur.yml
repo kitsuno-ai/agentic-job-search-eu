@@ -1,0 +1,39 @@
+name: Bundesagentur für Arbeit (Arbeitsagentur)
+slug: arbeitsagentur
+url: https://www.arbeitsagentur.de
+
+countries: [DE]
+languages: [de, en]
+focus: general
+
+access_type: api
+api_docs_url: https://jobsuche.api.bund.dev/
+requires_auth: true
+auth_type: token
+terms_url: https://www.arbeitsagentur.de/datenschutz
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+estimated_volume: 2000000
+
+rate_limits: |
+  Client credentials flow via OAuth2-style token exchange. Access quotas are
+  generous but not infinite — production crawlers should batch requests and
+  back off on any HTTP 429.
+
+notes: |
+  The German federal employment agency and authoritative source for German
+  vacancies. Very large volume but not all listings are fresh — many stay up
+  well past the actual application deadline. Use the listing publication date
+  aggressively for freshness filtering. Description field is German-only for
+  most listings, even when the role is English-speaking. Structured fields are
+  excellent: standardized occupation codes (KldB 2010), employment type, working
+  hours, contract duration, and explicit "befristet/unbefristet" flag.
+  Geographic data is complete down to postal code.
+
+last_verified: 2026-04-23
+
+aliases: [bundesagentur-fuer-arbeit, agentur-fuer-arbeit]
+operator: Bundesagentur für Arbeit
+headquartered_in: DE

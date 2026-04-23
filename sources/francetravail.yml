@@ -1,0 +1,40 @@
+name: France Travail
+slug: francetravail
+url: https://www.francetravail.fr
+
+countries: [FR]
+languages: [fr]
+focus: general
+
+access_type: api
+api_docs_url: https://francetravail.io/data/api/offres-emploi
+requires_auth: true
+auth_type: oauth
+terms_url: https://francetravail.io/data/licences
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: realtime
+estimated_volume: 800000
+
+rate_limits: |
+  OAuth 2.0 client-credentials flow. Access tokens expire after 1500 seconds.
+  Default quota is generous for legitimate aggregation use; higher quotas by request.
+
+notes: |
+  France's public employment service. Formerly Pôle Emploi; rebranded 2024.
+  Provides the authoritative feed for French job postings — aggregates from
+  Pôle Emploi's own employer portal and partner boards. Data quality is
+  excellent: structured ROME codes (standardized French occupation taxonomy),
+  reliable salary fields (where disclosed), and consistent location data down
+  to commune level. ROME codes map to ESCO with a known crosswalk and are
+  the cleanest multilingual skill-matching anchor for FR roles. OAuth tokens
+  must be refreshed every 25 minutes — plan your crawl cadence accordingly.
+  Some listings have contract_type="non-precise" which is noisy; filter if
+  you need reliable CDI/CDD/freelance distinction.
+
+last_verified: 2026-04-23
+
+aliases: [pole-emploi, pole_emploi]
+operator: France Travail
+headquartered_in: FR

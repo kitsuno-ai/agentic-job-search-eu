@@ -1,0 +1,31 @@
+name: Himalayas
+slug: himalayas
+url: https://himalayas.app
+
+countries: ["*"]
+languages: [en]
+focus: remote
+
+access_type: api
+api_docs_url: https://himalayas.app/jobs/api
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+estimated_volume: 8000
+
+rate_limits: |
+  Public JSON API. Conservative pacing recommended; no documented per-second
+  limit. Pagination supported.
+
+notes: |
+  Remote-first board with unusually rich company profiles alongside job
+  listings — each employer has a structured profile with size, funding,
+  tech stack, benefits, hiring process, and time-zone requirements. This
+  makes Himalayas genuinely useful for research even beyond the job data.
+  Strong coverage across engineering, product, design, and increasingly
+  operations. Salary bands disclosed in most listings.
+
+last_verified: 2026-04-23

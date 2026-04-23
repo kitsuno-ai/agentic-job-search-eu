@@ -1,0 +1,27 @@
+name: Totaljobs
+slug: totaljobs
+url: https://www.totaljobs.com
+
+countries: [GB]
+languages: [en]
+focus: general
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+terms_url: https://www.totaljobs.com/info/terms-and-conditions
+
+kitsuno_status: wishlist
+license_posture: restricted
+
+notes: |
+  Major UK general job board, part of the Stepstone Group. Reed already
+  provides strong UK coverage, and Totaljobs would mainly add breadth in
+  admin, retail, and operational roles where Reed skews professional.
+  No public aggregation API. ToS restricts automated access. On the
+  wishlist as a potential phase-2 integration if UK coverage gaps emerge.
+
+last_verified: 2026-04-23
+
+operator: Stepstone Group
+headquartered_in: DE

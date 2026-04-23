@@ -1,0 +1,36 @@
+name: Reed
+slug: reed
+url: https://www.reed.co.uk
+
+countries: [GB]
+languages: [en]
+focus: general
+
+access_type: api
+api_docs_url: https://www.reed.co.uk/developers
+requires_auth: true
+auth_type: api_key
+terms_url: https://www.reed.co.uk/developers/jobseeker
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: hourly
+estimated_volume: 250000
+
+rate_limits: |
+  Basic key sufficient for moderate use. No public per-second limit published;
+  exponential backoff recommended on any HTTP 429.
+
+notes: |
+  One of the largest UK-focused job boards. Well-structured API returning
+  employer name, salary range, location (including WFH flag), and a short
+  description. Full description requires following to reed.co.uk. Salary fields
+  are usually filled when disclosed, but "Competitive" and empty salary are
+  common — don't treat missing salary as meaningful signal. Location field mixes
+  city names, county names, and the literal string "UK" — normalize if you care
+  about geography. Employer tier affects how many listings come back per query.
+
+last_verified: 2026-04-23
+
+operator: Reed Online Ltd
+headquartered_in: GB

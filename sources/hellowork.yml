@@ -1,0 +1,28 @@
+name: HelloWork
+slug: hellowork
+url: https://www.hellowork.com
+
+countries: [FR]
+languages: [fr, en]
+focus: general
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+terms_url: https://www.hellowork.com/fr-fr/cgu.html
+
+kitsuno_status: wishlist
+license_posture: restricted
+
+notes: |
+  Large French general job board (formerly RegionsJob family). France Travail
+  already provides authoritative public-sector coverage, and HelloWork would
+  complement with stronger private-sector and SMB representation, especially
+  in regions outside Île-de-France. No public aggregation API. ToS restricts
+  automated access. On the wishlist.
+
+last_verified: 2026-04-23
+
+operator: Groupe HelloWork
+headquartered_in: FR
+aliases: [regionsjob]

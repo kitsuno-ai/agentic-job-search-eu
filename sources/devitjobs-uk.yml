@@ -1,0 +1,31 @@
+name: DevITjobs UK
+slug: devitjobs-uk
+url: https://devitjobs.uk
+
+countries: [GB]
+languages: [en]
+focus: tech
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+estimated_volume: 3000
+
+rate_limits: |
+  No documented API. Listings are on a static-style site. Conservative crawl
+  rate (1 req every few seconds) well tolerated in practice.
+
+notes: |
+  Part of the DevITjobs family of country-specific IT boards. UK edition focuses
+  on full-stack, backend, DevOps, mobile. Listings typically include required
+  tech stack as explicit tags, salary bands (when disclosed), and remote flags,
+  which makes downstream extraction easier than scraping generalist boards.
+  Listing turnover is moderate — jobs tend to stay up for 3-4 weeks.
+
+last_verified: 2026-04-23
+
+aliases: [devitjobs_uk]

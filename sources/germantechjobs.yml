@@ -1,0 +1,29 @@
+name: German Tech Jobs
+slug: germantechjobs
+url: https://germantechjobs.de
+
+countries: [DE, AT, CH]
+languages: [en, de]
+focus: tech
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+estimated_volume: 5000
+
+rate_limits: |
+  No documented API. Static-style site tolerates conservative crawling.
+
+notes: |
+  Germany-focused tech board with English-speaking / relocation-friendly bias.
+  Listings tend to be mid-senior full-stack, backend, and data roles. Many
+  positions are explicit about visa sponsorship and relocation support, which
+  is rare on generalist DE boards. Salary disclosed inconsistently — when
+  present it's typically a band rather than a point value. DACH coverage
+  extends to Austria and Switzerland but the core is Berlin, Munich, Hamburg.
+
+last_verified: 2026-04-23

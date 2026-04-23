@@ -1,0 +1,38 @@
+name: NAV (Arbeidsplassen)
+slug: nav
+url: https://arbeidsplassen.nav.no
+
+countries: ["NO"]
+languages: ["no", en]
+focus: general
+
+access_type: api
+api_docs_url: https://pam-stilling-feed.nav.no/
+requires_auth: true
+auth_type: token
+terms_url: https://www.nav.no/personvern-og-sikkerhet
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: realtime
+estimated_volume: 80000
+
+rate_limits: |
+  Public token available from https://pam-stilling-feed.nav.no/api/publicToken
+  (rotates). Stable private tokens available by registering as a consumer
+  (contact nav.team.arbeidsplassen@nav.no).
+
+notes: |
+  NAV is Norway's labour and welfare administration — Arbeidsplassen.nav.no
+  is the vacancy-listing portal and authoritative feed for Norwegian jobs.
+  Clean API with standardized STYRK occupation codes and geographic data
+  down to kommune. Public token is rotating — works but the rotation schedule
+  can interrupt long-running crawls. For production, request a stable
+  private token. Listings mix Norwegian and English; larger employers
+  (oil & gas, maritime, public sector) are increasingly English-friendly.
+
+last_verified: 2026-04-23
+
+operator: NAV (Arbeids- og velferdsforvaltningen)
+headquartered_in: "NO"
+aliases: [arbeidsplassen, pam-stilling-feed]

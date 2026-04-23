@@ -1,0 +1,30 @@
+name: Jobicy
+slug: jobicy
+url: https://jobicy.com
+
+countries: ["*"]
+languages: [en]
+focus: remote
+
+access_type: api
+api_docs_url: https://jobicy.com/jobs-rss-feed
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+estimated_volume: 12000
+
+rate_limits: |
+  Public JSON and RSS endpoints. Pagination supported. No documented rate
+  limit; conservative pacing recommended.
+
+notes: |
+  Remote-first aggregator covering tech, design, marketing, HR, customer
+  support. Category filtering is strong. Listings mix direct employer posts
+  with pass-throughs from other boards — a share of listings are duplicates
+  of what you'd get on RemoteOK or Remotive. Useful as coverage-widener but
+  not a primary source for any single sector.
+
+last_verified: 2026-04-23

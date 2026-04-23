@@ -1,0 +1,34 @@
+name: Jobs.ch
+slug: jobs-ch
+url: https://www.jobs.ch
+
+countries: [CH]
+languages: [de, fr, it, en]
+focus: general
+
+access_type: hybrid
+requires_auth: true
+auth_type: api_key
+terms_url: https://www.jobs.ch/en/terms/
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: hourly
+estimated_volume: 50000
+
+rate_limits: |
+  Partner API with per-key quotas. Throttle aggressive past ~10 req/sec.
+
+notes: |
+  Switzerland's largest job board. Strong coverage across all three major
+  language regions (German, French, Italian). Italian listings are sparse
+  outside Ticino — set expectations accordingly for IT-language searches.
+  Employer tier affects listing visibility: premium listings surface first.
+  Some listings redirect to company ATS (Workday, Greenhouse) for the actual
+  apply step.
+
+last_verified: 2026-04-23
+
+operator: JobCloud AG
+headquartered_in: CH
+aliases: [jobs.ch]

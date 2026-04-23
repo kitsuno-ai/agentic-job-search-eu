@@ -1,0 +1,32 @@
+name: Public Jobs CH
+slug: publicjobs-ch
+url: https://www.publicjobs.ch
+
+countries: [CH]
+languages: [de, fr, it, en]
+focus: sector
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+estimated_volume: 2000
+
+rate_limits: |
+  No documented API. HTML scrape with standard pagination.
+
+notes: |
+  Dedicated Swiss public-sector board — federal, cantonal, and municipal
+  employers plus adjacent public entities (ETH, EPFL, public utilities).
+  Listings are well-structured and nearly always show full salary bands
+  following the Swiss public-sector classification system. Language of the
+  listing follows the canton: DE for DE-Switzerland, FR for Romandie, IT
+  for Ticino. Complete bilingual / trilingual listings are rare — expect
+  one primary language per posting.
+
+last_verified: 2026-04-23
+
+aliases: [publicjobs_ch]

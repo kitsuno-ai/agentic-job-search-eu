@@ -1,0 +1,28 @@
+name: Swiss Dev Jobs
+slug: swissdevjobs
+url: https://swissdevjobs.ch
+
+countries: [CH]
+languages: [en, de, fr]
+focus: tech
+
+access_type: scrape
+requires_auth: false
+auth_type: none
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+estimated_volume: 2000
+
+rate_limits: |
+  No documented API. Conservative scrape rate tolerated.
+
+notes: |
+  Tech-specific Swiss board. Strong coverage of Zürich and Geneva/Lausanne tech
+  ecosystems. English-language listings dominate for larger employers; smaller
+  Swiss firms often list in DE or FR depending on canton. Explicit remote and
+  hybrid flags in most listings. Salary disclosure is more common here than on
+  general Swiss boards — Swiss salary bands tend to be informative when shown.
+
+last_verified: 2026-04-23
