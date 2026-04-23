@@ -163,7 +163,7 @@ If you're building an agentic job-search tool, we'd love to hear about it — [h
 
 ## License
 
-- **Source data** (contents of `sources/` and `stats/`): [CC-BY-SA 4.0](./LICENSE-DATA) — free to use, requires attribution and share-alike.
+- **Source data** (contents of `sources/` and `stats/`): [CC-BY-SA 4.0](./DATA-LICENSE.md) — free to use, requires attribution and share-alike.
 - **Code** (`tools/`, `examples/`, schema): [MIT](./LICENSE) — use it however you want.
 
 Attribution for the data is a link back to this repo and/or [kitsuno.ai](https://kitsuno.ai).
