@@ -1,0 +1,27 @@
+name: Hipo.ro
+slug: hipo
+url: https://www.hipo.ro
+
+countries: [RO]
+languages: [ro, en]
+focus: general
+
+access_type: scrape
+requires_auth: true
+auth_type: api_key
+
+kitsuno_status: inactive
+license_posture: restricted
+update_frequency: unknown
+
+notes: |
+  Romanian board aimed at graduates and early-career roles. Reached
+  indirectly through a commercial Google-search API rather than directly.
+
+  Marked inactive on the evidence: 12 runs, 12 results found, zero unique. The
+  indirect route surfaces almost nothing, and what it does surface is already
+  covered by eJobs.ro. Left documented because the board itself is real and worth
+  a direct integration if someone gets access — the graduate segment is genuinely
+  underserved by the RO sources we do have.
+
+last_verified: 2026-07-23

@@ -1,0 +1,28 @@
+name: OLX.ro
+slug: olx
+url: https://www.olx.ro
+
+countries: [RO]
+languages: [ro]
+focus: general
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: active
+license_posture: restricted
+update_frequency: hourly
+
+notes: |
+  General classifieds marketplace with a large jobs vertical
+  (/locuri-de-munca). Reaches parts of the Romanian labour market that formal
+  boards do not: informal, seasonal, trades, hospitality and regional roles
+  outside Bucharest and Cluj.
+
+  Signal quality is correspondingly low. Unique yield is ~21%, the worst of any
+  active source we run, and postings are frequently reposted, vague, or lack a
+  real employer identity. Treat it as a supplement to eJobs.ro rather than a
+  primary, and expect to spend real effort on dedup and on filtering out
+  recruitment-agency spam. Romanian-language only.
+
+last_verified: 2026-07-23

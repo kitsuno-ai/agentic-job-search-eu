@@ -1,0 +1,27 @@
+name: Dice
+slug: dice
+url: https://www.dice.com
+
+countries: [US]
+languages: [en]
+focus: tech
+
+access_type: scrape
+requires_auth: true
+auth_type: api_key
+
+kitsuno_status: active
+license_posture: restricted
+update_frequency: daily
+
+notes: |
+  Long-established US tech and engineering board. We do not reach it
+  directly — Dice restricts automated access, so listings are discovered through a
+  commercial Google-search API and followed to the posting. That means coverage is
+  whatever the search index has, not the full board, and volume is a fraction of
+  what a direct integration would give.
+
+  Kept active because it is a cheap, low-maintenance read on the US tech market,
+  which is useful as a comparison baseline. If you are building EU-only, skip it.
+
+last_verified: 2026-07-23

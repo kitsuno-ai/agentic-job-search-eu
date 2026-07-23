@@ -1,0 +1,30 @@
+name: Úřad práce ČR (Czech Labour Office)
+slug: uradprace-cz
+url: https://www.mpsv.gov.cz
+
+countries: [CZ]
+languages: [cs]
+focus: general
+
+access_type: api
+api_docs_url: https://data.mpsv.cz/
+requires_auth: false
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+
+notes: |
+  The Czech public employment service, and one of the best open-data
+  job sources in the EU. The Ministry of Labour publishes vacancies as genuine
+  open data at data.mpsv.cz — bulk incremental files, no authentication, no
+  rate-limit games, plus companion reference datasets (municipality codes and so
+  on) for clean geocoding.
+
+  This is what a public employment service should look like from an integrator's
+  perspective, and it is a useful benchmark to point at when arguing for open
+  labour-market data elsewhere. Czech-language only. Covers registered vacancies,
+  so pair it with a commercial board such as Prace.cz for private-sector and
+  agency listings that never enter the register.
+
+last_verified: 2026-07-23

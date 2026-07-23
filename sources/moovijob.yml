@@ -1,0 +1,27 @@
+name: Moovijob
+slug: moovijob
+url: https://www.moovijob.com
+
+countries: [LU]
+languages: [fr, en, de]
+focus: general
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: active
+license_posture: restricted
+update_frequency: daily
+
+notes: |
+  The main job board for Luxembourg, which is otherwise close to
+  invisible in EU crawling — it is small enough that the big aggregators barely
+  index it and large enough as a labour market (finance, EU institutions, and a
+  cross-border workforce commuting from FR, DE and BE) to matter.
+
+  Presents an anti-bot challenge, so headless-browser handling is required.
+  Listings are mostly French with a substantial English minority; German appears
+  in cross-border roles. Unique yield is very high (~94%), which reflects a small
+  board with real turnover rather than a large static index.
+
+last_verified: 2026-07-23

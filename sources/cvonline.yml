@@ -1,0 +1,27 @@
+name: CV.online (CV.ee / CV.lv / CVonline.lt)
+slug: cvonline
+url: https://www.cvonline.lt
+
+countries: [EE, LV, LT]
+languages: [et, lv, lt, en, ru]
+focus: general
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: active
+license_posture: restricted
+update_frequency: daily
+
+notes: |
+  The dominant general job board across all three Baltic states, run as
+  three country domains (cv.ee, cv.lv, cvonline.lt) over a shared search backend.
+  One integration covers all three if you parameterise the host and locale.
+
+  Presents an anti-bot challenge, so a plain HTTP client will not get through —
+  plan for headless-browser handling. Listings are predominantly in the local
+  language; Russian-language postings are common in EE and LV and are worth
+  keeping rather than filtering, since they reflect a real segment of the
+  regional labour market. Estonia carries the most tech volume of the three.
+
+last_verified: 2026-07-23

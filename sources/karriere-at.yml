@@ -11,7 +11,7 @@ requires_auth: false
 auth_type: none
 terms_url: https://www.karriere.at/bedingungen
 
-kitsuno_status: wishlist
+kitsuno_status: active
 license_posture: restricted
 
 notes: |
@@ -21,7 +21,7 @@ notes: |
   especially outside Vienna. No public aggregation API. ToS restricts
   automated access. On the wishlist.
 
-last_verified: 2026-04-23
+last_verified: 2026-07-23
 
 operator: karriere.at GmbH
 headquartered_in: AT

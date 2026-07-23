@@ -1,71 +1,109 @@
 # Agentic Job Search — EU Job Sources Directory
 
-A community-maintained, machine-readable directory of job sources reachable from Europe, designed for people building **agentic job-search tools**: AI agents, crawlers, aggregators, and research projects.
+A machine-readable directory of job sources reachable from Europe, for people building
+**agentic job-search tools**: AI agents, crawlers, aggregators, labour-market research.
 
-Every source is documented in a single YAML file with coverage, access method, rate limits, licensing posture, and real-world crawl notes.
+Every source is one YAML file covering coverage, access method, authentication, rate limits,
+licensing posture, and honest notes on what breaks in practice.
 
----
-
-## See this in action
-
-The coverage volumes and source statuses in this directory reflect [Kitsuno](https://kitsuno.ai)'s production crawl. Live operational numbers — total jobs crawled, unique postings ingested, per-source run counts, strong matches surfaced — are published at:
-
-**→ [kitsuno.ai/stats](https://kitsuno.ai/stats)**
-
-As far as we can tell, no other EU job-search operator publishes these numbers. If you're evaluating whether any of the sources below are worth integrating, the live stats tell you whether they're actually producing.
+**57 sources · 49 active in production · 34 countries**
 
 ---
 
-## Why this exists
+## What makes this different from an awesome-list
 
-Most "awesome job board" lists stop at a URL and a one-liner. That's not enough to build anything agentic.
+Two things.
 
-Building an AI job-search agent means knowing, per source:
-- Which countries and languages it actually covers
-- Whether there's a public API, an RSS feed, or just HTML to scrape
-- What the ToS says about aggregation and automation
+**1. Every status is measured, not asserted.** `kitsuno_status` comes from production crawl
+logs, not from whether the site looked alive when someone added it. Four sources in here are
+marked `inactive` because we wired them, ran them, and they produced nothing. That negative
+result is in the directory on purpose.
+
+**2. We publish yield.** For each source: how many postings it returns, and how many of those
+are actually new.
+
+| Source | Found | Unique | Yield |
+|---|---:|---:|---:|
+| ats-direct | 19,039,517 | 6,347,397 | 33.3% |
+| jobs-ch | 2,328,810 | 1,237,123 | 53.1% |
+| nofluffjobs | 2,024,247 | 1,772,188 | 87.5% |
+| adzuna | 1,423,707 | 1,107,253 | 77.8% |
+| indeed | 849,139 | 239,648 | 28.2% |
+| linkedin | 203,000 | 46,238 | 22.8% |
+| olx | 11,620 | 2,482 | 21.4% |
+
+A source returning 850k results of which 28% are new costs you 850k requests worth of rate
+limit for 240k postings. That ratio decides what is worth integrating, and as far as we can
+tell nobody else publishes it. Full table: **[stats/yield.md](./stats/yield.md)**.
+
+Totals across the sources in this directory: **30,311,358 found, 13,828,153 unique**, over
+roughly 70,000 crawl runs since March 2026. Figures as of 2026-07-23; these move every three
+hours, so treat them as a snapshot and see [kitsuno.ai/stats](https://kitsuno.ai/stats) for live
+numbers.
+
+---
+
+## Why it exists
+
+Most job-board lists stop at a URL and a one-liner. Building an agent needs more:
+
+- Which countries and languages the source actually covers
+- Whether there is an API, an RSS feed, or only HTML
+- What the ToS says about automated aggregation
 - Where the rate limits are
-- What breaks in practice (pagination, region-locking, stale listings, silent cutoffs)
+- What breaks: pagination, geo-restriction, anti-bot challenges, stale listings, silent cutoffs
 
-We've been crawling these sources for a year at [Kitsuno](https://kitsuno.ai). This repo is the shared reference we wished existed when we started.
+We run these sources in production at [Kitsuno](https://kitsuno.ai). This is the reference we
+wanted when we started.
 
 ---
 
-## What's in v1
-
-**30+ active EU-reachable sources**, documented one YAML per source, with fields covering:
-
-- Countries and languages
-- Access type (API / RSS / scrape / hybrid)
-- Authentication requirements
-- Update frequency and estimated volume
-- Rate limits and practical notes
-- License posture (aggregator-friendly / neutral / restricted)
-- Status: `active`, `inactive`, or `wishlist`
-
-**Coverage today:**
+## Coverage
 
 | Region | Active sources |
 |---|---|
-| 🇨🇭 Switzerland | jobs_ch, swissdevjobs, publicjobs_ch |
-| 🇩🇪 Germany | germantechjobs, arbeitsagentur |
-| 🇫🇷 France | francetravail, devitjobs_fr |
-| 🇬🇧 United Kingdom | reed, devitjobs_uk |
-| 🇳🇱 Netherlands | devitjobs_nl |
+| 🇨🇭 Switzerland | jobs-ch, swissdevjobs, publicjobs-ch, job-room |
+| 🇩🇪 Germany | arbeitsagentur, germantechjobs |
+| 🇫🇷 France | francetravail, devitjobs-fr |
+| 🇬🇧 United Kingdom | reed, devitjobs-uk |
+| 🇦🇹 Austria | karriere-at |
+| 🇳🇱 Netherlands | devitjobs-nl, iamexpat |
 | 🇸🇪 Sweden | platsbanken |
 | 🇳🇴 Norway | nav |
-| 🇷🇴 Romania | devjob_ro, olx |
-| EU-wide | arbeitnow, 80000hours |
-| Global / remote | adzuna, indeed, linkedin, jooble, themuse, remoteok, remotive, jobicy, working_nomads, himalayas |
-| Specialized | reliefweb (UN/humanitarian), google_xray (22 ATS platforms) |
+| 🇩🇰🇫🇮 Nordics | thehub |
+| 🇵🇱 Poland | pracuj, nofluffjobs |
+| 🇨🇿 Czechia | prace-cz, uradprace-cz |
+| 🇸🇰 Slovakia | profesia-sk |
+| 🇭🇺 Hungary | profession-hu |
+| 🇵🇹 Portugal | netempregos |
+| 🇪🇸 Spain | tecnoempleo |
+| 🇷🇴 Romania | ejobs-ro, devjob-ro, olx |
+| 🇱🇺 Luxembourg | moovijob |
+| 🇪🇪🇱🇻🇱🇹 Baltics | cvonline |
+| EU-wide | arbeitnow, euremotejobs |
+| Aggregators | adzuna, indeed, linkedin, jooble, themuse |
+| Remote | remoteok, remotive, jobicy, working-nomads, himalayas, weworkremotely |
+| ATS direct | ats-direct (Greenhouse / Lever / Ashby / Recruitee / SmartRecruiters) |
+| Sector | reliefweb, devex, 80000hours |
 
-Total job volume observed across sources: **900,000+ postings**.
+Full breakdown by focus, access type and licence posture:
+**[stats/coverage.md](./stats/coverage.md)**.
 
-**Wishlist sources** (documented but not yet integrated): StepStone, Jobindex, Totaljobs, HelloWork, Karriere.at, plus community suggestions.
+### Sources worth knowing about
+
+- **uradprace-cz** — the Czech labour ministry publishes vacancies as genuine open data at
+  `data.mpsv.cz`. Bulk incremental files, no auth, companion geocoding datasets. This is what a
+  public employment service should look like to an integrator.
+- **job-room** — Switzerland's registration duty means employers must post qualifying vacancies
+  here first, with a head start before advertising elsewhere. A real early-warning surface.
+- **netempregos** — a plain RSS feed, no auth, no anti-bot layer, and it out-produces several
+  pan-European aggregators. Best effort-to-yield ratio in the directory.
+- **nofluffjobs** — mandatory salary ranges and structured tech stacks on every posting. Very
+  little European hiring data is this clean.
 
 ---
 
-## How to use the data
+## Using it
 
 ### Python
 
@@ -73,26 +111,26 @@ Total job volume observed across sources: **900,000+ postings**.
 import yaml
 from pathlib import Path
 
-sources = []
-for f in Path("sources").glob("*.yml"):
-    if f.name.startswith("_"):
-        continue
-    with open(f) as fh:
-        sources.append(yaml.safe_load(fh))
-
-# Filter: active sources with a public API covering Germany
-api_de = [
-    s for s in sources
-    if s["kitsuno_status"] == "active"
-    and s["access_type"] == "api"
-    and "DE" in s["countries"]
+sources = [
+    yaml.safe_load(f.read_text())
+    for f in Path("sources").glob("*.yml")
+    if not f.name.startswith("_")
 ]
 
-for s in api_de:
-    print(f"{s['name']:25} {s['api_docs_url']}")
+# Active sources with a real API, no auth, covering Czechia
+easy_cz = [
+    s for s in sources
+    if s["kitsuno_status"] == "active"
+    and s["access_type"] in ("api", "rss")
+    and not s["requires_auth"]
+    and "CZ" in s["countries"]
+]
+
+for s in easy_cz:
+    print(f'{s["name"]:30} {s.get("api_docs_url", s["url"])}')
 ```
 
-### JavaScript / Node
+### JavaScript
 
 ```javascript
 import { readdir, readFile } from 'fs/promises';
@@ -105,20 +143,22 @@ const sources = await Promise.all(
     .map(async f => parse(await readFile(`sources/${f}`, 'utf8')))
 );
 
-const remoteEu = sources.filter(s =>
+// Everything you can integrate in an afternoon
+const lowFriction = sources.filter(s =>
   s.kitsuno_status === 'active' &&
-  s.focus === 'remote' &&
-  s.countries.some(c => ['DE','FR','NL','CH','UK'].includes(c))
+  ['api', 'rss'].includes(s.access_type) &&
+  !s.requires_auth &&
+  ['aggregator-friendly', 'neutral'].includes(s.license_posture)
 );
 ```
 
-More examples in [`examples/`](./examples/).
+More in [`examples/`](./examples/).
 
 ---
 
-## The schema
+## Schema
 
-Each YAML follows [`sources/_schema.yml`](./sources/_schema.yml). At minimum:
+Each file follows [`sources/_schema.yml`](./sources/_schema.yml).
 
 ```yaml
 name: Jobs.ch
@@ -126,44 +166,74 @@ slug: jobs-ch
 url: https://www.jobs.ch
 countries: [CH]
 languages: [de, fr, it, en]
-access_type: api            # api | rss | scrape | hybrid
+focus: general              # general | tech | remote | sector | aggregator
+access_type: hybrid         # api | rss | scrape | hybrid
 requires_auth: true
-license_posture: aggregator-friendly
-focus: general              # general | tech | remote | sector
+license_posture: neutral    # aggregator-friendly | neutral | restricted | hostile | unknown
 kitsuno_status: active      # active | inactive | wishlist
-last_verified: 2026-04-23
+last_verified: 2026-07-23
 notes: |
-  Strong CH coverage including FR/IT cantons.
+  Strong CH coverage across all three language regions.
   Italian listings sparse outside Ticino.
 ```
 
-See [`sources/README.md`](./sources/README.md) for the full field reference.
+Note on ISO codes in YAML: `NO` (Norway) and `no` (Norwegian) parse as boolean false, and `*`
+opens an alias. Quote them. We got this wrong first time round.
+
+Full field reference: [`sources/README.md`](./sources/README.md).
+
+---
+
+## Agent-to-agent: the Handshake protocol
+
+This directory is the crawl side of the problem: how an agent working for a job seeker finds
+openings. The other half is what happens when a seeker-side agent and an employer-side system
+need to talk to each other without either party dumping a candidate database on the internet.
+
+That is a separate open specification: **[kitso-handshake-agents](https://github.com/kitsuno-ai/kitso-handshake-agents)**
+(Apache 2.0). Consent-scoped candidate and vacancy cards, policy-based matching, state hashing.
+If you are building on the employer side and want an interoperable way to receive consented
+candidate interest rather than being crawled, that is the repo to read.
+
+We would rather agree on a protocol than have every party scrape every other party.
 
 ---
 
 ## Contributing
 
-**Missing a source?** Open an issue using the [new-source template](.github/ISSUE_TEMPLATE/new-source.md) or submit a PR with a new YAML file.
+Missing a source? Open an issue with the
+[new-source template](.github/ISSUE_TEMPLATE/new-source.md), or send a PR with a YAML file.
 
-**Spotted incorrect info?** PRs welcome — the `notes` and `last_verified` fields are where real-world crawl wisdom lives.
+Spotted something wrong? PRs very welcome. `notes` and `last_verified` are where the real
+knowledge lives, and ours goes stale like everyone else's.
 
-Every PR runs through [`tools/validate.py`](./tools/validate.py) in CI to check schema compliance.
+Every PR runs [`tools/validate.py`](./tools/validate.py) in CI.
 
-See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for full guidelines.
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+
+---
+
+## Scope
+
+This directory covers sources we operate in production and can speak to from evidence. It is
+not exhaustive, and it deliberately does not document every channel we run. Sources are added
+when we have enough production history to write something honest in `notes`.
 
 ---
 
 ## About
 
-This directory is maintained by the team at [Kitsuno](https://kitsuno.ai) — an AI job search agent built for European careers. We open-sourced our source directory because cataloging EU job sources shouldn't be something every team has to redo from scratch.
+Maintained by [Kitsuno](https://kitsuno.ai), a consent-first AI job-search agent for European
+careers. We opened this up because cataloguing EU job sources should not be something every
+team redoes from scratch.
 
-If you're building an agentic job-search tool, we'd love to hear about it — [hello@kitsuno.ai](mailto:hello@kitsuno.ai).
+Building something agentic in this space? [hello@kitsuno.ai](mailto:hello@kitsuno.ai).
 
 ---
 
 ## License
 
-- **Source data** (contents of `sources/` and `stats/`): [CC-BY-SA 4.0](./DATA-LICENSE.md) — free to use, requires attribution and share-alike.
-- **Code** (`tools/`, `examples/`, schema): [MIT](./LICENSE) — use it however you want.
+- **Data** (`sources/`, `stats/`): [CC-BY-SA 4.0](./DATA-LICENSE.md) — attribution and share-alike.
+- **Code** (`tools/`, `examples/`, schema): [MIT](./LICENSE).
 
-Attribution for the data is a link back to this repo and/or [kitsuno.ai](https://kitsuno.ai).
+Attribution is a link back to this repo or to [kitsuno.ai](https://kitsuno.ai).

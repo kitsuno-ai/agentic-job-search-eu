@@ -1,0 +1,27 @@
+name: Google Jobs
+slug: google-jobs
+url: https://www.google.com/search?q=jobs
+
+countries: ["*"]
+languages: [en]
+focus: aggregator
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: inactive
+license_posture: hostile
+update_frequency: unknown
+
+notes: |
+  The Google for Jobs aggregation surface. Wired via JobSpy, zero
+  production runs — same outcome as Glassdoor and ZipRecruiter.
+
+  Worth understanding structurally: Google for Jobs is itself an aggregator of
+  schema.org JobPosting markup, so anything reachable through it is, in principle,
+  reachable from the originating site. Going to the source is more work up front
+  and considerably more stable. Note also that a commercial Google-search API is a
+  viable indirect route and is how we reach Dice and 80,000 Hours — that is a
+  different mechanism from this node and it does work.
+
+last_verified: 2026-07-23

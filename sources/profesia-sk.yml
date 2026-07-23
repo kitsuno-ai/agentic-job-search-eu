@@ -1,0 +1,26 @@
+name: Profesia.sk
+slug: profesia-sk
+url: https://www.profesia.sk
+
+countries: [SK]
+languages: [sk, en]
+focus: general
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+
+notes: |
+  The dominant Slovak job board and effectively the only source that
+  gives real SK coverage — Slovakia is otherwise one of the larger EU blind spots,
+  picked up only incidentally by pan-European aggregators.
+
+  Clean, conventional HTML extraction. Slovak-language descriptions; Czech
+  speakers will find much of it readable, and a number of employers post to both
+  this and the Czech boards, so cross-source dedup between SK and CZ is worth
+  implementing. Newest source in our set, so volume figures are still early.
+
+last_verified: 2026-07-23

@@ -1,0 +1,34 @@
+name: ATS Direct (Greenhouse / Lever / Ashby / Recruitee / SmartRecruiters)
+slug: ats-direct
+url: https://www.greenhouse.io/
+
+countries: ["*"]
+languages: [en]
+focus: aggregator
+
+access_type: api
+requires_auth: false
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: hourly
+
+notes: |
+  Not a job board. A fan-out across the public job-board APIs that
+  modern applicant tracking systems expose per company: Greenhouse
+  (boards-api.greenhouse.io), Lever (api.lever.co), Ashby
+  (api.ashbyhq.com/posting-api), Recruitee (<company>.recruitee.com/api/offers)
+  and SmartRecruiters. Each is unauthenticated and documented, and returns the
+  employer's own canonical posting rather than a syndicated copy.
+
+  By volume this is the single largest channel we run — roughly 63% of everything
+  we crawl. It is also the most duplicative: unique yield sits near 33%, because
+  a company's board is re-polled on every cycle and most roles persist for weeks.
+  Budget for aggressive dedup on a stable per-posting id.
+
+  The hard part is not the fetch, it is maintaining the company list. There is no
+  directory of which employers use which ATS; that list has to be discovered and
+  curated continuously. Roles reached this way are first-party and link straight
+  to the real apply flow, which makes it the highest-trust channel we have.
+
+last_verified: 2026-07-23

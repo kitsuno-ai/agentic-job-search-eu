@@ -1,0 +1,28 @@
+name: Net-Empregos
+slug: netempregos
+url: https://www.net-empregos.com
+
+countries: [PT]
+languages: [pt]
+focus: general
+
+access_type: rss
+requires_auth: false
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: hourly
+
+notes: |
+  Portugal's highest-volume general job board and, for our money, the
+  best effort-to-yield ratio of any source in this directory. It publishes a plain
+  RSS feed at /rss.asp — no authentication, no anti-bot layer, no pagination
+  puzzle. The integration is an afternoon.
+
+  For that, roughly 302k found and 184k unique in four months, which puts a single
+  Portuguese board ahead of several pan-European aggregators. Listings are
+  Portuguese-language and skew toward services, retail, logistics and trades
+  rather than tech, which is a feature if you care about non-desk work — most
+  agentic job tooling is tech-shaped and misses this segment entirely.
+
+last_verified: 2026-07-23

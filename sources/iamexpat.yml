@@ -1,0 +1,27 @@
+name: IamExpat
+slug: iamexpat
+url: https://www.iamexpat.nl
+
+countries: [NL]
+languages: [en]
+focus: general
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+
+notes: |
+  Netherlands board for English-language roles aimed at internationals.
+  Narrow but unusually well-targeted: on most Dutch sources you have to infer
+  whether a role is open to a non-Dutch speaker, and here that filter is the
+  premise of the site.
+
+  Also carries relocation, housing and visa context alongside the postings, which
+  matters for cross-border seekers. Volume is small in absolute terms (~44k found,
+  ~32k unique) but the hit rate for an English-speaking candidate targeting NL is
+  far better than filtering a general Dutch board down.
+
+last_verified: 2026-07-23

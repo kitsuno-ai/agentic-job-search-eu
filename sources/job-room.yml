@@ -1,0 +1,28 @@
+name: job-room.ch (RAV / SECO)
+slug: job-room
+url: https://www.job-room.ch
+
+countries: [CH]
+languages: [de, fr, it, en]
+focus: general
+
+access_type: api
+requires_auth: false
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+
+notes: |
+  The Swiss public employment service platform, operated by SECO and the
+  cantonal RAV offices. Structurally important rather than merely large: under the
+  Swiss job-registration duty (Stellenmeldepflicht), employers must register
+  vacancies in occupations with above-threshold unemployment here first, with a
+  head-start period before they may be advertised elsewhere.
+
+  That makes job-room a genuine early-warning surface — roles appear here before
+  jobs.ch in the affected occupation categories. Public-sector data, no
+  authentication, and covers all four language regions. If you are building for
+  Switzerland, this belongs in your first three sources, not your long tail.
+
+last_verified: 2026-07-23

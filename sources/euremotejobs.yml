@@ -1,0 +1,28 @@
+name: EU Remote Jobs
+slug: euremotejobs
+url: https://euremotejobs.com
+
+countries: ["*"]
+languages: [en]
+focus: remote
+
+access_type: api
+api_docs_url: https://developer.wordpress.org/rest-api/
+requires_auth: false
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+
+notes: |
+  Small curated board for remote roles that are actually open to
+  European residents — which is the gap most remote boards leave, since the large
+  ones are dominated by US postings that quietly require US work authorisation.
+  Volume is modest but the EU-eligibility filter is done for you.
+
+  Runs on WordPress and exposes the standard wp-json REST API, so the integration
+  is trivial and stable: query the job-listings post type, page with per_page and
+  orderby. Anti-bot handling is occasionally needed. Unique yield is high (~85%),
+  consistent with a curated board that does not recycle listings.
+
+last_verified: 2026-07-23

@@ -1,0 +1,26 @@
+name: ZipRecruiter
+slug: zip-recruiter
+url: https://www.ziprecruiter.com
+
+countries: [US, GB]
+languages: [en]
+focus: aggregator
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: inactive
+license_posture: hostile
+update_frequency: unknown
+
+notes: |
+  US-centric job marketplace. Wired via JobSpy, zero production runs in
+  four months — the third of three JobSpy-routed sources that never worked for us,
+  alongside Glassdoor and Google Jobs.
+
+  Recorded as a negative result. Also largely out of scope for a European
+  directory: the UK presence is thin and everything else requires US work
+  authorisation. Documented so the next person can skip it deliberately rather
+  than by accident.
+
+last_verified: 2026-07-23

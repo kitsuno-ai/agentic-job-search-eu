@@ -1,81 +1,86 @@
 # Coverage
 
-Summary of what's in `sources/`. Regenerate with `python examples/load_sources.py` (human-readable) or adapt the loader for your own output format.
+Generated from `sources/` on 2026-07-23. Regenerate with `python examples/load_sources.py`.
 
-*Last regenerated: 2026-04-23.*
+For live operational numbers see https://kitsuno.ai/stats and [yield.md](./yield.md).
 
-For **live operational numbers** backing this directory — total crawled, unique jobs, per-source run counts, match rates — see [kitsuno.ai/stats](https://kitsuno.ai/stats).
-
-## Status breakdown
+## Status
 
 | Status | Count |
-|---|---|
-| active | 27 |
-| wishlist | 5 |
-| inactive | 0 |
-| **Total** | **32** |
+|---|---:|
+| active | 49 |
+| inactive | 4 |
+| wishlist | 4 |
+| **Total** | **57** |
 
-## By focus
+## By focus (active)
 
-| Focus | Active | Examples |
-|---|---|---|
-| general | 7 | jobs-ch, francetravail, reed, arbeitsagentur, platsbanken, nav, themuse |
-| tech | 6 | germantechjobs, swissdevjobs, devjob-ro, devitjobs-uk, devitjobs-fr, devitjobs-nl |
-| remote | 6 | arbeitnow, remoteok, remotive, jobicy, working-nomads, himalayas |
-| aggregator | 5 | adzuna, indeed, linkedin, jooble, google-xray |
-| sector | 3 | reliefweb, publicjobs-ch, 80000hours |
+| Focus | Count | Examples |
+|---|---:|---|
+| general | 20 | arbeitsagentur, cvonline, ejobs-ro, francetravail, iamexpat |
+| tech | 11 | devitjobs-fr, devitjobs-nl, devitjobs-uk, devitjobs-us, devjob-ro |
+| remote | 8 | arbeitnow, euremotejobs, himalayas, jobicy, remoteok |
+| aggregator | 6 | adzuna, ats-direct, google-xray, indeed, jooble |
+| sector | 4 | 80000hours, devex, publicjobs-ch, reliefweb |
 
-## By access type
+## By access type (active)
 
-| Access type | Count |
-|---|---|
-| api | 15 |
-| scrape | 9 |
+| Access | Count |
+|---|---:|
+| api | 23 |
+| scrape | 21 |
 | hybrid | 3 |
-| rss | 0 |
+| rss | 2 |
 
-## By license posture (active only)
+## By license posture (active)
 
-| Posture | Count | Notes |
-|---|---|---|
-| aggregator-friendly | 14 | Explicit API access or partner programs |
-| neutral | 8 | ToS silent on aggregation |
-| restricted | 4 | ToS restricts automated access — care required |
-| hostile | 1 | LinkedIn |
+| Posture | Count |
+|---|---:|
+| aggregator-friendly | 22 |
+| neutral | 15 |
+| restricted | 11 |
+| hostile | 1 |
 
-## Country coverage (active only)
+## Country coverage (active)
 
 | Country | Sources |
 |---|---|
-| 🇨🇭 Switzerland | jobs-ch, swissdevjobs, publicjobs-ch, germantechjobs, adzuna, arbeitnow |
-| 🇩🇪 Germany | arbeitsagentur, germantechjobs, adzuna, arbeitnow |
-| 🇫🇷 France | francetravail, devitjobs-fr, adzuna, arbeitnow |
-| 🇬🇧 United Kingdom | reed, devitjobs-uk, adzuna, arbeitnow |
-| 🇦🇹 Austria | germantechjobs, adzuna, arbeitnow |
-| 🇳🇱 Netherlands | devitjobs-nl, adzuna, arbeitnow |
-| 🇸🇪 Sweden | platsbanken, arbeitnow |
-| 🇳🇴 Norway | nav, arbeitnow |
-| 🇵🇱 Poland | adzuna, arbeitnow |
-| 🇮🇹 Italy | adzuna, arbeitnow |
-| 🇪🇸 Spain | adzuna, arbeitnow |
-| 🇷🇴 Romania | devjob-ro |
-| 🇧🇪 Belgium | arbeitnow |
-| 🇮🇪 Ireland | arbeitnow |
-| 🇩🇰 Denmark | arbeitnow |
-| 🇫🇮 Finland | arbeitnow |
-| 🇵🇹 Portugal | arbeitnow |
-| 🌍 Global / remote | 80000hours, google-xray, himalayas, indeed, jobicy, jooble, linkedin, remoteok, remotive, reliefweb, themuse, working-nomads |
+| 🇦🇹 AT | adzuna, arbeitnow, germantechjobs, karriere-at |
+|  AU | adzuna |
+| 🇧🇪 BE | arbeitnow |
+|  BR | adzuna |
+|  CA | adzuna |
+| 🇨🇭 CH | adzuna, arbeitnow, germantechjobs, job-room, jobs-ch, publicjobs-ch, swissdevjobs |
+| 🇨🇿 CZ | nofluffjobs, prace-cz, uradprace-cz |
+| 🇩🇪 DE | adzuna, arbeitnow, arbeitsagentur, germantechjobs, thehub |
+| 🇩🇰 DK | arbeitnow, thehub |
+| 🇪🇪 EE | cvonline |
+| 🇪🇸 ES | adzuna, arbeitnow, tecnoempleo |
+| 🇫🇮 FI | arbeitnow, thehub |
+| 🇫🇷 FR | adzuna, arbeitnow, devitjobs-fr, francetravail |
+| 🇬🇧 GB | adzuna, arbeitnow, devitjobs-uk, reed |
+| 🇭🇺 HU | nofluffjobs, profession-hu |
+| 🇮🇪 IE | arbeitnow |
+|  IN | adzuna |
+| 🇮🇹 IT | adzuna, arbeitnow |
+| 🇱🇹 LT | cvonline |
+| 🇱🇺 LU | moovijob |
+| 🇱🇻 LV | cvonline |
+|  MX | adzuna |
+| 🇳🇱 NL | adzuna, arbeitnow, devitjobs-nl, iamexpat, thehub |
+| 🇳🇴 NO | arbeitnow, nav, thehub |
+|  NZ | adzuna |
+| 🇵🇱 PL | adzuna, arbeitnow, nofluffjobs, pracuj |
+| 🇵🇹 PT | arbeitnow, netempregos |
+| 🇷🇴 RO | devjob-ro, ejobs-ro, olx |
+|  RU | adzuna |
+| 🇸🇪 SE | arbeitnow, platsbanken, thehub |
+|  SG | adzuna |
+| 🇸🇰 SK | nofluffjobs, profesia-sk |
+| 🇺🇸 US | adzuna, devitjobs-us, dice |
+|  ZA | adzuna |
+| 🌍 * | 80000hours, ats-direct, devex, euremotejobs, google-xray, himalayas, indeed, jobicy, jooble, linkedin, reliefweb, remoteok, remotive, themuse, weworkremotely, working-nomads |
 
-## Wishlist (known-public sources, not yet integrated)
+## Languages (active)
 
-| Source | Country | Reason on wishlist |
-|---|---|---|
-| stepstone | DE, AT, BE, NL | Would materially improve DACH coverage; ToS restricts |
-| jobindex | DK | Only Danish source visible; ToS restricts |
-| hellowork | FR | Complements France Travail with private-sector SMB coverage |
-| totaljobs | GB | Phase-2 addition if UK coverage gaps emerge |
-| karriere-at | AT | Authoritative Austrian coverage outside Vienna |
-
-## Language coverage (active only)
-
-Listings observed in at least one active source for: English, German, French, Italian, Spanish, Dutch, Polish, Portuguese, Russian, Ukrainian, Swedish, Norwegian, Danish, Finnish, Romanian.
+Listings observed in: cs, da, de, en, es, et, fi, fr, hu, it, ja, lt, lv, nl, no, pl, pt, ro, ru, sk, sv, uk, zh.

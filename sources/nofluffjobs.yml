@@ -1,0 +1,28 @@
+name: NoFluffJobs
+slug: nofluffjobs
+url: https://nofluffjobs.com
+
+countries: [PL, CZ, SK, HU]
+languages: [pl, en]
+focus: tech
+
+access_type: api
+requires_auth: false
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: hourly
+
+notes: |
+  Polish-founded tech board, now with meaningful CZ, SK and HU coverage.
+  The standout on data quality: mandatory salary ranges on every posting, plus
+  structured tech stacks with required-versus-nice-to-have split and seniority.
+  Very little European hiring data is this clean.
+
+  A JSON search API is reachable at /api/search/posting with an unauthenticated
+  pageTo/pageSize/salaryCurrency contract, and per-posting detail at
+  /api/posting/<id>. Unique yield is the highest of any high-volume source we run,
+  around 88% against roughly 2.0M found — real churn, not a re-read. If you are
+  building anything that reasons about compensation in CEE, start here.
+
+last_verified: 2026-07-23

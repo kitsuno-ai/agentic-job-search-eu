@@ -1,0 +1,28 @@
+name: WeWorkRemotely
+slug: weworkremotely
+url: https://weworkremotely.com
+
+countries: ["*"]
+languages: [en]
+focus: remote
+
+access_type: rss
+requires_auth: false
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: hourly
+
+notes: |
+  One of the oldest and highest-traffic remote job boards. Publishes a
+  full RSS feed at /remote-jobs.rss — unauthenticated, stable, trivially parsed.
+  No anti-bot layer.
+
+  The caveat that matters for European users: a large share of postings are
+  US-based and quietly require US work authorisation, and the feed does not
+  reliably say so. Region eligibility is often buried in prose rather than being a
+  structured field, so expect to parse the description for it. High volume, low
+  integration cost, moderate precision for an EU audience — worth running, worth
+  filtering hard.
+
+last_verified: 2026-07-23

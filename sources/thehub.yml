@@ -1,0 +1,28 @@
+name: The Hub
+slug: thehub
+url: https://thehub.io
+
+countries: [DK, SE, "NO", FI, DE, NL]
+languages: [en]
+focus: tech
+
+access_type: api
+requires_auth: false
+
+kitsuno_status: active
+license_posture: aggregator-friendly
+update_frequency: daily
+
+notes: |
+  Nordic-founded startup and scale-up job board, backed by Danske Bank,
+  with coverage extending into DE and NL. Roles are English-language by default
+  and skew early-stage: equity is frequently mentioned, company stage and headcount
+  are usually present.
+
+  A JSON API is available at /api/jobs with no authentication. One operational
+  quirk worth knowing: it behaves poorly with empty or overly broad queries and
+  wants actual keywords to return a useful set, so a blank-query firehose crawl
+  will disappoint. Unique yield is very high (~97%). Best single source for
+  Nordic startup roles if your users read English.
+
+last_verified: 2026-07-23

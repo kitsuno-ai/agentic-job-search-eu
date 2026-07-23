@@ -1,0 +1,27 @@
+name: Tecnoempleo
+slug: tecnoempleo
+url: https://www.tecnoempleo.com
+
+countries: [ES]
+languages: [es, en]
+focus: tech
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: active
+license_posture: restricted
+update_frequency: daily
+
+notes: |
+  The main Spanish IT and technology job board. Spain is badly served by
+  the general aggregators — Adzuna and Indeed carry Spanish volume but with poor
+  role classification — so a dedicated tech source materially improves ES results.
+
+  Presents an anti-bot challenge, so headless-browser handling is required.
+  Pagination is a page parameter off /ofertas-trabajo/. Spanish-language
+  descriptions with English common in multinational and remote-first postings.
+  Madrid and Barcelona dominate; Valencia and Málaga are growing and now show
+  meaningful volume.
+
+last_verified: 2026-07-23

@@ -30,7 +30,7 @@ notes: |
   city names, county names, and the literal string "UK" — normalize if you care
   about geography. Employer tier affects how many listings come back per query.
 
-last_verified: 2026-04-23
+last_verified: 2026-07-23
 
 operator: Reed Online Ltd
 headquartered_in: GB

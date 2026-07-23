@@ -1,0 +1,27 @@
+name: Profession.hu
+slug: profession-hu
+url: https://www.profession.hu
+
+countries: [HU]
+languages: [hu, en]
+focus: general
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+
+notes: |
+  Hungary's leading job board, and like Profesia.sk essentially the only
+  route to genuine national coverage. Hungarian is a language barrier that keeps
+  this market underrepresented in pan-European tooling — machine translation of
+  descriptions is close to mandatory if your users do not read Hungarian.
+
+  Straightforward extraction off /allasok/. Budapest dominates the listing volume
+  heavily; regional coverage thins out fast outside the capital and Debrecen.
+  Unique yield near 99%, though the source is recent enough that this has not
+  been through a full listing lifecycle.
+
+last_verified: 2026-07-23

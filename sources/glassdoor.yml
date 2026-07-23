@@ -1,0 +1,27 @@
+name: Glassdoor
+slug: glassdoor
+url: https://www.glassdoor.com
+
+countries: ["*"]
+languages: [en]
+focus: aggregator
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: inactive
+license_posture: hostile
+update_frequency: unknown
+
+notes: |
+  Wired via JobSpy and never produced a single usable run in four
+  months of production. Recorded here as a negative result, which is the honest
+  thing to publish: Glassdoor's bot protection is effective, and the open-source
+  scrapers that nominally support it did not work for us at any useful volume.
+
+  Retained in the catalogue as inactive rather than deleted so that nobody
+  (including us) spends another week rediscovering this. If you need employer
+  review data, treat it as a separate licensing conversation rather than a crawl
+  target.
+
+last_verified: 2026-07-23

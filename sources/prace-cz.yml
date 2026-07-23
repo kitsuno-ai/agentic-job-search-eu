@@ -1,0 +1,28 @@
+name: Prace.cz
+slug: prace-cz
+url: https://www.prace.cz
+
+countries: [CZ]
+languages: [cs, en]
+focus: general
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+
+notes: |
+  One of the two dominant Czech commercial job boards. Pairs with
+  Úřad práce ČR (the public open-data source) for a fairly complete CZ picture:
+  the public source has the legally-registered vacancies, this one has the
+  private-sector and agency listings that never reach the register.
+
+  Straightforward HTML extraction off /nabidky/ with stable per-posting URLs.
+  Unique yield is near 100%, though note this source has only been running a short
+  time so that figure has not yet been through a full listing-lifecycle. Czech
+  descriptions with occasional English for international employers in Prague and
+  Brno.
+
+last_verified: 2026-07-23

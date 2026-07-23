@@ -1,0 +1,26 @@
+name: Pracuj.pl
+slug: pracuj
+url: https://www.pracuj.pl
+
+countries: [PL]
+languages: [pl, en]
+focus: general
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: active
+license_posture: restricted
+update_frequency: hourly
+
+notes: |
+  Poland's largest general job board. Where NoFluffJobs covers tech with
+  excellent structure, this covers everything else with more volume and less
+  structure — the two together give strong Polish coverage.
+
+  Presents an anti-bot challenge, so headless-browser handling is required.
+  Pagination is a simple page-number parameter off /praca. Polish-language
+  descriptions dominate; salary is present on a minority of listings, in sharp
+  contrast to the Polish tech boards where it is mandatory.
+
+last_verified: 2026-07-23

@@ -1,0 +1,30 @@
+name: Devex
+slug: devex
+url: https://www.devex.com
+
+countries: ["*"]
+languages: [en]
+focus: sector
+
+access_type: api
+requires_auth: false
+
+kitsuno_status: active
+license_posture: restricted
+update_frequency: daily
+
+notes: |
+  The reference job board for the international development and global
+  health sector: UN agencies, bilateral donors, INGOs, implementing partners and
+  development consultancies. Pairs naturally with ReliefWeb, which skews more
+  toward acute humanitarian response than long-horizon development programming.
+
+  There is a public search API under /api/public/search/jobs returning clean JSON,
+  but the site sits behind an anti-bot layer, so reaching that endpoint needs
+  headless-browser handling rather than a bare fetch. Roles are global rather than
+  EU-specific; useful for European seekers mainly because the sector's European
+  hubs (Brussels, Geneva, The Hague, Bonn, Copenhagen) are heavily represented.
+  Some listings are members-only and expose title and organisation but truncate
+  the description.
+
+last_verified: 2026-07-23

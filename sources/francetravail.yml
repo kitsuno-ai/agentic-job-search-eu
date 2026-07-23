@@ -33,7 +33,7 @@ notes: |
   Some listings have contract_type="non-precise" which is noisy; filter if
   you need reliable CDI/CDD/freelance distinction.
 
-last_verified: 2026-04-23
+last_verified: 2026-07-23
 
 aliases: [pole-emploi, pole_emploi]
 operator: France Travail

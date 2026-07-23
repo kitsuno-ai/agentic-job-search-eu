@@ -1,0 +1,24 @@
+name: DevITjobs.com (US)
+slug: devitjobs-us
+url: https://devitjobs.com
+
+countries: [US]
+languages: [en]
+focus: tech
+
+access_type: scrape
+requires_auth: false
+
+kitsuno_status: active
+license_posture: neutral
+update_frequency: daily
+
+notes: |
+  US arm of the DevITjobs network (see also the UK, FR and NL files).
+  Same platform and same extraction path, so it costs almost nothing to add once
+  one of the siblings works. Included here for completeness even though it is out
+  of EU scope: it is a useful control when comparing salary-transparency rates,
+  because the network publishes explicit salary ranges on most listings across
+  every country it operates in — still rare on European boards outside Poland.
+
+last_verified: 2026-07-23
