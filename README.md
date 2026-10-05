@@ -6,7 +6,7 @@ A machine-readable directory of job sources reachable from Europe, for people bu
 Every source is one YAML file covering coverage, access method, authentication, rate limits,
 licensing posture, and honest notes on what breaks in practice.
 
-**57 sources · 49 active in production · 34 countries**
+**54 sources · 46 active in production · 34 countries**
 
 ---
 
@@ -30,14 +30,13 @@ are actually new.
 | adzuna | 1,423,707 | 1,107,253 | 77.8% |
 | indeed | 849,139 | 239,648 | 28.2% |
 | linkedin | 203,000 | 46,238 | 22.8% |
-| olx | 11,620 | 2,482 | 21.4% |
 
 A source returning 850k results of which 28% are new costs you 850k requests worth of rate
 limit for 240k postings. That ratio decides what is worth integrating, and as far as we can
 tell nobody else publishes it. Full table: **[stats/yield.md](./stats/yield.md)**.
 
-Totals across the sources in this directory: **30,311,358 found, 13,828,153 unique**, over
-roughly 70,000 crawl runs since March 2026. Figures as of 2026-07-23; these move every three
+Totals across the sources in this directory: **29,956,363 found, 13,525,301 unique**, over
+roughly 60,000 crawl runs since March 2026. Figures as of 2026-07-23; these move every three
 hours, so treat them as a snapshot and see [kitsuno.ai/stats](https://kitsuno.ai/stats) for live
 numbers.
 
@@ -77,10 +76,10 @@ wanted when we started.
 | 🇭🇺 Hungary | profession-hu |
 | 🇵🇹 Portugal | netempregos |
 | 🇪🇸 Spain | tecnoempleo |
-| 🇷🇴 Romania | ejobs-ro, devjob-ro, olx |
+| 🇷🇴 Romania | devjob-ro |
 | 🇱🇺 Luxembourg | moovijob |
 | 🇪🇪🇱🇻🇱🇹 Baltics | cvonline |
-| EU-wide | arbeitnow, euremotejobs |
+| EU-wide | arbeitnow |
 | Aggregators | adzuna, indeed, linkedin, jooble, themuse |
 | Remote | remoteok, remotive, jobicy, working-nomads, himalayas, weworkremotely |
 | ATS direct | ats-direct (Greenhouse / Lever / Ashby / Recruitee / SmartRecruiters) |
@@ -88,6 +87,18 @@ wanted when we started.
 
 Full breakdown by focus, access type and licence posture:
 **[stats/coverage.md](./stats/coverage.md)**.
+
+### Removed sources
+
+We removed three sources on 2026-10-05. Their earlier files are in the git history.
+
+| Source | Why we removed it |
+|---|---|
+| ejobs-ro (eJobs.ro) | The eJobs terms of use (section 5) do not allow copying or storing job ads, or the use of crawlers, without written consent from eJobs. Since 2026-10-05, eJobs also blocks automated access. |
+| euremotejobs (EU Remote Jobs) | The EU Remote Jobs terms of service (17 April 2026) do not allow scrapers, crawlers or APIs to extract content, republication of listings, or bulk collection. The job API has returned HTTP 401 since 2026-09-28. |
+| olx (OLX.ro) | OLX.ro blocks our crawler (HTTP 403). We stopped crawling it on 2026-09-01, so we have no current measurements. |
+
+We are now checking the terms of every other source in this directory.
 
 ### Sources worth knowing about
 

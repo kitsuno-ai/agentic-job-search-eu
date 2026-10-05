@@ -1,6 +1,6 @@
 # Coverage
 
-Generated from `sources/` on 2026-07-23. Regenerate with `python examples/load_sources.py`.
+Generated from `sources/` on 2026-07-23; ejobs-ro, euremotejobs and olx removed on 2026-10-05 (see README). Regenerate with `python examples/load_sources.py`.
 
 For live operational numbers see https://kitsuno.ai/stats and [yield.md](./yield.md).
 
@@ -8,18 +8,18 @@ For live operational numbers see https://kitsuno.ai/stats and [yield.md](./yield
 
 | Status | Count |
 |---|---:|
-| active | 49 |
+| active | 46 |
 | inactive | 4 |
 | wishlist | 4 |
-| **Total** | **57** |
+| **Total** | **54** |
 
 ## By focus (active)
 
 | Focus | Count | Examples |
 |---|---:|---|
-| general | 20 | arbeitsagentur, cvonline, ejobs-ro, francetravail, iamexpat |
+| general | 18 | arbeitsagentur, cvonline, francetravail, iamexpat, job-room |
 | tech | 11 | devitjobs-fr, devitjobs-nl, devitjobs-uk, devitjobs-us, devjob-ro |
-| remote | 8 | arbeitnow, euremotejobs, himalayas, jobicy, remoteok |
+| remote | 7 | arbeitnow, himalayas, jobicy, remoteok, remotive |
 | aggregator | 6 | adzuna, ats-direct, google-xray, indeed, jooble |
 | sector | 4 | 80000hours, devex, publicjobs-ch, reliefweb |
 
@@ -27,8 +27,8 @@ For live operational numbers see https://kitsuno.ai/stats and [yield.md](./yield
 
 | Access | Count |
 |---|---:|
-| api | 23 |
-| scrape | 21 |
+| api | 21 |
+| scrape | 20 |
 | hybrid | 3 |
 | rss | 2 |
 
@@ -37,8 +37,8 @@ For live operational numbers see https://kitsuno.ai/stats and [yield.md](./yield
 | Posture | Count |
 |---|---:|
 | aggregator-friendly | 22 |
-| neutral | 15 |
-| restricted | 11 |
+| neutral | 14 |
+| restricted | 9 |
 | hostile | 1 |
 
 ## Country coverage (active)
@@ -72,14 +72,14 @@ For live operational numbers see https://kitsuno.ai/stats and [yield.md](./yield
 |  NZ | adzuna |
 | 🇵🇱 PL | adzuna, arbeitnow, nofluffjobs, pracuj |
 | 🇵🇹 PT | arbeitnow, netempregos |
-| 🇷🇴 RO | devjob-ro, ejobs-ro, olx |
+| 🇷🇴 RO | devjob-ro |
 |  RU | adzuna |
 | 🇸🇪 SE | arbeitnow, platsbanken, thehub |
 |  SG | adzuna |
 | 🇸🇰 SK | nofluffjobs, profesia-sk |
 | 🇺🇸 US | adzuna, devitjobs-us, dice |
 |  ZA | adzuna |
-| 🌍 * | 80000hours, ats-direct, devex, euremotejobs, google-xray, himalayas, indeed, jobicy, jooble, linkedin, reliefweb, remoteok, remotive, themuse, weworkremotely, working-nomads |
+| 🌍 * | 80000hours, ats-direct, devex, google-xray, himalayas, indeed, jobicy, jooble, linkedin, reliefweb, remoteok, remotive, themuse, weworkremotely, working-nomads |
 
 ## Languages (active)
 

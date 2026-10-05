@@ -9,7 +9,7 @@ you 100k requests worth of rate limit for 3k postings.
 **Found** is every posting returned by the source across all runs. **Unique** is the subset
 that was not already in our store. **Yield** is unique/found.
 
-Measured across 65,318 production crawl runs since 2026-03-18.
+Measured across 60,520 production crawl runs since 2026-03-18.
 Figures as of 2026-07-23; live totals at https://kitsuno.ai/stats
 
 | Source | Found | Unique | Yield | Runs | Last run |
@@ -25,12 +25,10 @@ Figures as of 2026-07-23; live totals at https://kitsuno.ai/stats
 | [Reed](../sources/reed.yml) | 270,423 | 201,888 | 74.7% | 873 | 2026-07-23 |
 | [RemoteOK](../sources/remoteok.yml) | 266,955 | 140,523 | 52.6% | 2,740 | 2026-07-23 |
 | [Jobicy](../sources/jobicy.yml) | 237,700 | 142,067 | 59.8% | 2,440 | 2026-07-23 |
-| [eJobs.ro](../sources/ejobs-ro.yml) | 226,793 | 201,351 | 88.8% | 1,575 | 2026-07-23 |
 | [The Muse](../sources/themuse.yml) | 225,698 | 159,592 | 70.7% | 1,084 | 2026-07-23 |
 | [Platsbanken](../sources/platsbanken.yml) | 223,852 | 198,839 | 88.8% | 789 | 2026-07-23 |
 | [LinkedIn](../sources/linkedin.yml) | 203,000 | 46,238 | 22.8% | 2,388 | 2026-07-23 |
 | [Himalayas](../sources/himalayas.yml) | 134,049 | 80,843 | 60.3% | 2,313 | 2026-07-23 |
-| [EU Remote Jobs](../sources/euremotejobs.yml) | 116,582 | 99,019 | 84.9% | 1,791 | 2026-07-23 |
 | [WeWorkRemotely](../sources/weworkremotely.yml) | 97,557 | 62,151 | 63.7% | 1,908 | 2026-07-23 |
 | [Working Nomads](../sources/working-nomads.yml) | 87,521 | 52,073 | 59.5% | 2,367 | 2026-07-23 |
 | [The Hub](../sources/thehub.yml) | 82,176 | 79,339 | 96.5% | 1,357 | 2026-07-23 |
@@ -60,11 +58,10 @@ Figures as of 2026-07-23; live totals at https://kitsuno.ai/stats
 | [Prace.cz](../sources/prace-cz.yml) | 14,439 | 14,407 | 99.8% | 84 | 2026-07-23 |
 | [Dice](../sources/dice.yml) | 14,053 | 9,400 | 66.9% | 1,412 | 2026-07-23 |
 | [Profession.hu](../sources/profession-hu.yml) | 13,436 | 13,304 | 99.0% | 224 | 2026-07-23 |
-| [OLX.ro](../sources/olx.yml) | 11,620 | 2,482 | 21.4% | 1,432 | 2026-07-23 |
 | [Profesia.sk](../sources/profesia-sk.yml) | 4,777 | 4,445 | 93.1% | 81 | 2026-07-23 |
 | [80,000 Hours Job Board](../sources/80000hours.yml) | 4,003 | 2,532 | 63.3% | 651 | 2026-07-23 |
 | [Hipo.ro](../sources/hipo.yml) | 12 | 0 | 0.0% | 12 | 2026-07-18 |
-| **Total** | **30,311,358** | **13,828,153** | **45.6%** | | |
+| **Total** | **29,956,363** | **13,525,301** | **45.2%** | | |
 
 ## How to read this
 
@@ -80,9 +77,6 @@ churn. These are the sources where crawling more often actually gets you more.
 recently-added boards. A near-100% figure usually means the source has not yet
 been running long enough to see its own listings age out, so treat it as
 provisional rather than as evidence of a uniquely fresh board.
-
-**Low yield outliers** (olx 21%). Heavy reposting, often by agencies. Filterable,
-but the filtering is the work.
 
 Yield is not quality. A source can return 100% unique postings that are all
 irrelevant to your users. It tells you what a crawl costs, not what it is worth.
