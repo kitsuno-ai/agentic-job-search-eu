@@ -3,12 +3,11 @@ slug: jobsireland
 url: https://jobsireland.ie/en-US
 
 countries: [IE]
-languages: [en, ga]
+languages: [en]
 focus: general
 
-access_type: api
+access_type: scrape
 requires_auth: false
-auth_type: none
 terms_url: https://jobsireland.ie/en-US/TermsConditions
 
 kitsuno_status: wishlist

@@ -17,15 +17,15 @@ license_posture: restricted
 update_frequency: unknown
 
 notes: |
-  VDAB is the Flemish public employment service. Its onboarding guidance says
-  vacancy data are restricted and not freely available. Access requires an
-  application and VDAB approval; a cooperation agreement may be required before
-  access is granted. Do not crawl or use vacancy data without authorization.
-  The exact authentication mechanism was not independently verified because
-  the developer portal requires access. Developer documentation describes
-  vacancy search, change and bulk-query
-  APIs, but the referenced portal requires access and was not independently
-  readable during this review. No listing volume or update cadence is asserted.
+  VDAB is the public employment service for Flanders only; Brussels (Actiris)
+  and Wallonia (Le Forem) are separate public employment services. Its
+  onboarding guidance states vacancy data are restricted and not freely
+  available. Access requires an application, approval, and potentially a
+  cooperation agreement before credentials are issued. Do not crawl or use
+  vacancy data without authorization. Developer documentation describes vacancy
+  search, change, and bulk-query APIs, but the portal requires authenticated
+  access and could not be independently verified during review. No listing volume
+  or update cadence is asserted.
 
 last_verified: 2026-10-17
 
