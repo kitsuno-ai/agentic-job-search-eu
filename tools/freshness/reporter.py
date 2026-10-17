@@ -19,23 +19,28 @@ SUMMARY_TEMPLATE = r"""# Listing Freshness & Persistence Report: {source_name} (
 
 | Metric | Measured Value | Methodology |
 | :--- | :--- | :--- |
-| **Total Tracked Listings** | {total_listings:,} | Cumulative state tracking |
+| **Total Tracked Listings** | {total_listings:,} | Cumulative state tracking within 365-day observation window |
 | **Currently Active** | {active_listings:,} | Present in latest snapshot / active stream |
 | **Withdrawn / Closed** | {withdrawn_listings:,} | Observed departures from register |
-| **Median Listing Lifetime** | {median_lifetime} | Kaplan-Meier 50% survival threshold |
-| **30-Day Survival Probability** | {survival_30d} | Kaplan-Meier $S(30)$ accounting for right-censoring |
-| **60-Day Survival Probability** | {survival_60d} | Kaplan-Meier $S(60)$ accounting for right-censoring |
-| **90-Day Survival Probability** | {survival_90d} | Kaplan-Meier $S(90)$ accounting for right-censoring |
-| **Staleness Ratio** | {staleness_ratio} ({stale_active_count:,} listings) | Active vacancies past stated expiration date |
+| **Median Listing Lifetime** | {median_lifetime} | Kaplan-Meier 50% survival threshold with left-truncation |
+| **30-Day Survival Probability** | {survival_30d} | Kaplan-Meier $S(30)$ accounting for delayed entry & right-censoring |
+| **60-Day Survival Probability** | {survival_60d} | Kaplan-Meier $S(60)$ accounting for delayed entry & right-censoring |
+| **90-Day Survival Probability** | {survival_90d} | Kaplan-Meier $S(90)$ accounting for delayed entry & right-censoring |
+| **Active Age > 90 Days** | {share_older_90d} ({count_older_90d:,} listings) | Share of active vacancies posted > 90 days ago (`datumVlozeni`) |
+| **Active Age > 180 Days** | {share_older_180d} ({count_older_180d:,} listings) | Share of active vacancies posted > 180 days ago (`datumVlozeni`) |
+| **Active Age > 365 Days** | {share_older_365d} ({count_older_365d:,} listings) | Share of active vacancies posted > 365 days ago (`datumVlozeni`) |
+| **Expiry Date Coverage** | {expiry_coverage_ratio} ({active_with_expiry:,} listings) | Proportion of active vacancies with explicit expiration date |
+| **Active Past Stated Expiry** | {stale_active_count:,} listings ({staleness_ratio}) | Overdue vacancies still active in upstream register |
 | **Schema Contract Integrity** | {drift_badge} | Structural validation of upstream response schema |
 
 {drift_section}
 
 ## 2. Statistical Methodology
 
-* **Right-Censored Survival Analysis:** Listings that remain active at observation time have not completed their full lifecycle. Naive ratio calculations bias survival downwards; this report applies the non-parametric **Kaplan-Meier estimator** ($S(t) = \prod_{{t_i \le t}} (1 - d_i/n_i)$) treating active vacancies as right-censored at current observation date.
+* **Left-Truncation & Right-Censoring (Kaplan-Meier):** Listings already online at baseline enter observation at `first_seen` (delayed entry: entry time $a_i = \text{{first\_seen}} - \text{{posted}}$). Counting them from `posted` without left truncation biases early survival upwards. This report implements the left-truncated Kaplan-Meier estimator ($S(t) = \prod_{{t_i \le t}} (1 - d_i/n_i)$) where risk set $n_i$ requires $a_k \le t_i \le \text{{exit}}_k$.
 * **Discrete Day Resolution:** Upstream timestamps operate on discrete calendar days (`YYYY-MM-DD`). Lifetimes are bounded to non-negative integer days.
-* **State Retention & Pruning:** Active listings are tracked continuously. Closed/withdrawn listings are maintained in compact state for 180 days to compute multi-month persistence curves, after which historical records are pruned to maintain lightweight git repository storage.
+* **Fixed Observation Window (365 Days):** To prevent survivor bias from asymmetric retention, both active and withdrawn listings outside the 365-day window from run date are pruned equally.
+* **Git Diff Minimization:** Active listings do not store mutable `last_seen` timestamps (implicit in run date). State records are stored in sorted single-line JSON format, restricting daily git commits strictly to newly added and withdrawn records.
 * **Raw Logs:** Ephemeral run logs are stored as 90-day GitHub Actions artifacts rather than polluting git history.
 """
 
@@ -84,8 +89,16 @@ def generate_markdown_summary(
         survival_30d=format_survival(metrics.survival_30d),
         survival_60d=format_survival(metrics.survival_60d),
         survival_90d=format_survival(metrics.survival_90d),
-        staleness_ratio=f"{metrics.staleness_ratio:.2f}%",
+        share_older_90d=f"{metrics.share_older_90d:.2f}%",
+        count_older_90d=metrics.count_older_90d,
+        share_older_180d=f"{metrics.share_older_180d:.2f}%",
+        count_older_180d=metrics.count_older_180d,
+        share_older_365d=f"{metrics.share_older_365d:.2f}%",
+        count_older_365d=metrics.count_older_365d,
+        expiry_coverage_ratio=f"{metrics.expiry_coverage_ratio:.2f}%",
+        active_with_expiry=metrics.active_with_expiry,
         stale_active_count=metrics.stale_active_count,
+        staleness_ratio=f"{metrics.staleness_ratio:.2f}%",
         drift_badge=drift_badge,
         drift_section=drift_section,
     )
@@ -115,6 +128,14 @@ def generate_run_log(
         "survival_30d": metrics.survival_30d,
         "survival_60d": metrics.survival_60d,
         "survival_90d": metrics.survival_90d,
+        "share_older_90d": metrics.share_older_90d,
+        "count_older_90d": metrics.count_older_90d,
+        "share_older_180d": metrics.share_older_180d,
+        "count_older_180d": metrics.count_older_180d,
+        "share_older_365d": metrics.share_older_365d,
+        "count_older_365d": metrics.count_older_365d,
+        "expiry_coverage_ratio": metrics.expiry_coverage_ratio,
+        "active_with_expiry": metrics.active_with_expiry,
         "stale_active_count": metrics.stale_active_count,
         "staleness_ratio": metrics.staleness_ratio,
         "schema_drift_detected": metrics.schema_drift_detected,

@@ -5,6 +5,10 @@ on:
     - cron: '0 3 * * *'  # Run daily at 03:00 UTC
   workflow_dispatch:      # Allow manual on-demand execution
 
+concurrency:
+  group: freshness-tracker-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   check-freshness:
     name: Track Freshness & Persistence

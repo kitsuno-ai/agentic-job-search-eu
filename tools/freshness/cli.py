@@ -20,7 +20,7 @@ from .state_tracker import load_state, save_state, update_state
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
-def download_to_temp(url: str, dest_path: Path, timeout: int = 60) -> None:
+def download_to_temp(url: str, dest_path: Path, timeout: int = 300) -> None:
     req = urllib.request.Request(
         url,
         headers={"User-Agent": "agentic-job-search-eu/freshness-bot (research; open-data-tracker)"},
@@ -42,6 +42,7 @@ def run_freshness_pipeline(
     checks_dir: Path | None = None,
     allowlist_path: Path | None = None,
     is_incremental: bool = False,
+    window_days: int = 365,
     strict_drift: bool = False,
 ) -> int:
     run_date = run_date_str or datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -106,6 +107,7 @@ def run_freshness_pipeline(
         parsed_listings=parse_result.listings,
         run_date=run_date,
         is_incremental=is_incremental,
+        window_days=window_days,
     )
     save_state(state_path, updated_state)
     print(f"Updated state saved to {state_path}")
@@ -147,7 +149,11 @@ def run_freshness_pipeline(
     print(f"Survival 30d:    {metrics.survival_30d}")
     print(f"Survival 60d:    {metrics.survival_60d}")
     print(f"Survival 90d:    {metrics.survival_90d}")
-    print(f"Staleness Ratio: {metrics.staleness_ratio}% ({metrics.stale_active_count} listings)")
+    print(f"Age > 90d:       {metrics.share_older_90d}% ({metrics.count_older_90d} listings)")
+    print(f"Age > 180d:      {metrics.share_older_180d}% ({metrics.count_older_180d} listings)")
+    print(f"Age > 365d:      {metrics.share_older_365d}% ({metrics.count_older_365d} listings)")
+    print(f"Expiry Coverage: {metrics.expiry_coverage_ratio}% ({metrics.active_with_expiry} listings)")
+    print(f"Expired Active:  {metrics.stale_active_count} listings")
     print(f"Schema Drift:    {'YES' if metrics.schema_drift_detected else 'NO'}")
 
     if strict_drift and metrics.schema_drift_detected:
@@ -166,6 +172,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--checks-dir", type=Path, default=None, help="Directory for raw check logs")
     parser.add_argument("--allowlist-file", type=Path, default=None, help="Path to allowlist.yml")
     parser.add_argument("--incremental", action="store_true", help="Process as incremental diff")
+    parser.add_argument("--window-days", type=int, default=365, help="Observation window in days")
     parser.add_argument("--strict-drift", action="store_true", help="Fail if schema drift is detected")
 
     args = parser.parse_args(argv)
@@ -177,6 +184,7 @@ def main(argv: list[str] | None = None) -> int:
         checks_dir=args.checks_dir,
         allowlist_path=args.allowlist_file,
         is_incremental=args.incremental,
+        window_days=args.window_days,
         strict_drift=args.strict_drift,
     )
 

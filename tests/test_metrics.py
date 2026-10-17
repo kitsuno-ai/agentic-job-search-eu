@@ -112,6 +112,56 @@ class TestMetrics(unittest.TestCase):
         self.assertEqual(metrics.stale_active_count, 1)
         self.assertEqual(metrics.staleness_ratio, 50.0)
 
+    def test_kaplan_meier_left_truncation_delayed_entry(self):
+        """
+        Verify that a listing posted prior to first_seen enters observation with delayed entry
+        and does not inflate the risk set before its entry age.
+        """
+        run_date = "2026-10-01"
+        # Listing 1: posted 2026-09-01, first_seen 2026-09-01 (entry_age=0), withdrawn 2026-09-11 (exit_age=10) -> event
+        r1 = ListingRecord(
+            listing_id="R1",
+            first_seen="2026-09-01",
+            posted="2026-09-01",
+            status="withdrawn",
+            withdrawn_date="2026-09-11",
+        )
+        # Listing 2: posted 2026-08-01, first_seen 2026-09-01 (entry_age=31), active at 2026-10-01 (exit_age=61)
+        # R2 enters at t=31, so at t=10 it is NOT at risk.
+        r2 = ListingRecord(
+            listing_id="R2",
+            first_seen="2026-09-01",
+            posted="2026-08-01",
+            status="active",
+        )
+
+        curve, median_days = compute_kaplan_meier([r1, r2], run_date_str=run_date)
+        # At t=10: only R1 was at risk (n=1, d=1), so S(10) = 1 - 1/1 = 0.0000
+        # If R2 were naively in the risk set without delayed entry, n would be 2 and S(10) would be 0.5000 (biased!)
+        self.assertIn(10, curve)
+        self.assertAlmostEqual(curve[10], 0.0000, places=4)
+        self.assertEqual(median_days, 10.0)
+
+    def test_age_distribution_and_expiry_coverage(self):
+        state = FreshnessState(slug="uradprace-cz", last_updated="2026-10-17", listings={})
+        # 1 listing posted 100 days ago (older than 90d) with expiry
+        state.listings["A1"] = ListingRecord("A1", "2026-07-09", posted="2026-07-09", expires="2026-12-31", status="active")
+        # 1 listing posted 200 days ago (older than 90d, 180d) without expiry
+        state.listings["A2"] = ListingRecord("A2", "2026-03-31", posted="2026-03-31", expires=None, status="active")
+        # 1 listing posted 400 days ago (older than 90d, 180d, 365d) without expiry
+        state.listings["A3"] = ListingRecord("A3", "2025-09-12", posted="2025-09-12", expires=None, status="active")
+
+        metrics = calculate_metrics(state, run_date_str="2026-10-17")
+        self.assertEqual(metrics.active_listings, 3)
+        self.assertEqual(metrics.count_older_90d, 3)
+        self.assertEqual(metrics.count_older_180d, 2)
+        self.assertEqual(metrics.count_older_365d, 1)
+        self.assertAlmostEqual(metrics.share_older_90d, 100.0, places=2)
+        self.assertAlmostEqual(metrics.share_older_180d, 66.67, places=2)
+        self.assertAlmostEqual(metrics.share_older_365d, 33.33, places=2)
+        self.assertAlmostEqual(metrics.expiry_coverage_ratio, 33.33, places=2)
+        self.assertEqual(metrics.active_with_expiry, 1)
+
 
 if __name__ == "__main__":
     unittest.main()

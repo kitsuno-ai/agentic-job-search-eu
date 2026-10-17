@@ -39,7 +39,7 @@ class TestStateTracker(unittest.TestCase):
         self.assertEqual(state.listings["L1"].status, "active")
         self.assertEqual(state.listings["L1"].last_seen, "2026-09-02")
         self.assertEqual(state.listings["L2"].status, "withdrawn")
-        self.assertEqual(state.listings["L2"].withdrawn_date, "2026-09-02")
+        self.assertEqual(state.listings["L2"].withdrawn_date, "2026-09-01")
         self.assertEqual(state.listings["L3"].status, "active")
 
     def test_incremental_deletion(self):
@@ -99,17 +99,55 @@ class TestStateTracker(unittest.TestCase):
             state.listings["X1"] = ListingRecord(
                 listing_id="X1",
                 first_seen="2026-10-01",
-                last_seen="2026-10-17",
                 posted="2026-10-01",
                 expires="2026-11-01",
                 status="active",
             )
+            state.listings["X2"] = ListingRecord(
+                listing_id="X2",
+                first_seen="2026-09-01",
+                last_seen="2026-09-15",
+                posted="2026-09-01",
+                expires=None,
+                status="withdrawn",
+                withdrawn_date="2026-09-15",
+            )
             save_state(path, state)
+
+            # Verify compact formatting: each listing is on its own single line
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read()
+                lines = content.splitlines()
+
+            # "X1" should be on a single line without nested indentation
+            x1_line = [l for l in lines if '"X1":' in l][0]
+            self.assertIn('"status": "active"', x1_line)
+            self.assertNotIn('"last_seen"', x1_line)  # active record drops last_seen
+
             loaded = load_state(path, slug="uradprace-cz")
             self.assertEqual(loaded.slug, "uradprace-cz")
             self.assertEqual(loaded.last_updated, "2026-10-17")
-            self.assertEqual(len(loaded.listings), 1)
+            self.assertEqual(len(loaded.listings), 2)
             self.assertEqual(loaded.listings["X1"].listing_id, "X1")
+            self.assertEqual(loaded.listings["X1"].status, "active")
+            self.assertEqual(loaded.listings["X2"].status, "withdrawn")
+            self.assertEqual(loaded.listings["X2"].withdrawn_date, "2026-09-15")
+
+    def test_fixed_window_both_statuses_pruning(self):
+        """Verify that fixed window (365d) prunes both active and withdrawn listings older than window."""
+        state = FreshnessState(slug="uradprace-cz", last_updated="", listings={})
+        # Active listing posted 400 days ago
+        state.listings["OLD_ACTIVE"] = ListingRecord("OLD_ACTIVE", "2025-08-01", posted="2025-08-01", status="active")
+        # Withdrawn listing posted 400 days ago
+        state.listings["OLD_WITHDRAWN"] = ListingRecord("OLD_WITHDRAWN", "2025-08-01", posted="2025-08-01", status="withdrawn", withdrawn_date="2025-09-01")
+        # Recent listing posted 30 days ago
+        state.listings["RECENT"] = ListingRecord("RECENT", "2026-09-17", posted="2026-09-17", status="active")
+
+        update_state(state, [], run_date="2026-10-17", is_incremental=False, window_days=365)
+        self.assertNotIn("OLD_ACTIVE", state.listings)
+        self.assertNotIn("OLD_WITHDRAWN", state.listings)
+        self.assertIn("RECENT", state.listings)
+        self.assertEqual(state.pruned_count, 2)
 
 
 if __name__ == "__main__":
