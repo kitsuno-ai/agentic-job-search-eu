@@ -26,3 +26,7 @@ Thumbs.db
 # Local-only files (contributors' personal notes)
 .local/
 *.local.yml
+
+# Ephemeral check logs (stored as GitHub Actions artifacts only)
+reports/checks/
+

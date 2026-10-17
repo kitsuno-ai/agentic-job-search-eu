@@ -1,0 +1,89 @@
+name: Daily Listing Freshness Tracker
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Run daily at 03:00 UTC
+  workflow_dispatch:      # Allow manual on-demand execution
+
+jobs:
+  check-freshness:
+    name: Track Freshness & Persistence
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Run freshness pipeline (uradprace-cz)
+        run: |
+          python -m tools.freshness.cli --slug uradprace-cz
+
+      - name: Upload freshness reports and ephemeral logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: freshness-artifacts
+          path: reports/
+          retention-days: 90
+
+  commit-results:
+    name: Commit State and Summary
+    needs: check-freshness
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Download freshness artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: freshness-artifacts
+          path: reports/
+
+      - name: Clean ephemeral run logs before commit
+        run: |
+          # Keep git history compact: raw daily run logs are kept as 90-day GHA artifacts only
+          rm -rf reports/checks
+
+      - name: Verify path confinement and security boundary
+        run: |
+          echo "Verifying that changes are strictly confined to reports/freshness/..."
+          
+          # Check for any modified or untracked file outside reports/freshness/
+          VIOLATIONS=$(git status --porcelain | awk '{print $2}' | grep -v '^reports/freshness/' || true)
+          
+          if [ -n "$VIOLATIONS" ]; then
+            echo "SECURITY VIOLATION: Unexpected changes detected outside reports/freshness/:"
+            echo "$VIOLATIONS"
+            exit 1
+          fi
+          
+          echo "Security assertion passed: all changes are strictly within reports/freshness/."
+
+      - name: Commit and push updated state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add reports/freshness/
+          if git diff --staged --quiet; then
+            echo "No state or summary changes to commit."
+          else
+            git commit -m "chore(freshness): update uradprace-cz freshness report [skip ci]"
+            git push
+          fi

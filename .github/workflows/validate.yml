@@ -1,16 +1,20 @@
-name: Validate sources
+name: Validate sources and tests
 
 on:
   pull_request:
     paths:
       - 'sources/**/*.yml'
-      - 'tools/validate.py'
+      - 'checks/**/*.yml'
+      - 'tools/**/*.py'
+      - 'tests/**/*.py'
       - '.github/workflows/validate.yml'
   push:
     branches: [main]
     paths:
       - 'sources/**/*.yml'
-      - 'tools/validate.py'
+      - 'checks/**/*.yml'
+      - 'tools/**/*.py'
+      - 'tests/**/*.py'
       - '.github/workflows/validate.yml'
 
 jobs:
@@ -29,3 +33,7 @@ jobs:
 
       - name: Validate all sources
         run: python tools/validate.py
+
+      - name: Run unit tests
+        run: python -m unittest discover tests
+
