@@ -1,0 +1,30 @@
+name: JobsIreland
+slug: jobsireland
+url: https://jobsireland.ie/en-US
+
+countries: [IE]
+languages: [en]
+focus: general
+
+access_type: scrape
+requires_auth: false
+terms_url: https://jobsireland.ie/en-US/TermsConditions
+
+kitsuno_status: wishlist
+license_posture: restricted
+update_frequency: unknown
+
+notes: |
+  Ireland's public employment service, operated by the Department of Social
+  Protection. A publicly reachable endpoint has been observed behind the web
+  application, but it is an undocumented frontend API, not a published public
+  API. No automated access or reuse permission is established by its
+  availability. The terms require contacting DSP for permission to republish
+  or reproduce material; obtain permission before collecting or redistributing
+  listings. Listing freshness has not been measured.
+
+last_verified: 2026-10-17
+
+operator: Department of Social Protection
+headquartered_in: IE
+aliases: [jobsireland.ie]

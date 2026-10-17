@@ -1,0 +1,34 @@
+name: VDAB
+slug: vdab
+url: https://www.vdab.be
+
+countries: [BE]
+languages: [nl]
+focus: general
+
+access_type: api
+api_docs_url: https://developer.vdab.be/openservices/product/5813/api/5298
+requires_auth: true
+auth_type: token
+terms_url: https://extranet.vdab.be/api-center-excellence-coe/hoe-verloopt-de-voorbereiding-onboarding
+
+kitsuno_status: wishlist
+license_posture: restricted
+update_frequency: unknown
+
+notes: |
+  VDAB is the public employment service for Flanders only; Brussels (Actiris)
+  and Wallonia (Le Forem) are separate public employment services. Its
+  onboarding guidance states vacancy data are restricted and not freely
+  available. Access requires an application, approval, and potentially a
+  cooperation agreement before credentials are issued. Do not crawl or use
+  vacancy data without authorization. Developer documentation describes vacancy
+  search, change, and bulk-query APIs, but the portal requires authenticated
+  access and could not be independently verified during review. No listing volume
+  or update cadence is asserted.
+
+last_verified: 2026-10-17
+
+operator: Vlaamse Dienst voor Arbeidsbemiddeling en Beroepsopleiding
+headquartered_in: BE
+aliases: [Vlaamse Dienst voor Arbeidsbemiddeling en Beroepsopleiding]
