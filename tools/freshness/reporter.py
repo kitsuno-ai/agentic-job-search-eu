@@ -30,7 +30,7 @@ SUMMARY_TEMPLATE = r"""# Listing Freshness & Persistence Report: {source_name} (
 | **Active Age > 180 Days** | {share_older_180d} ({count_older_180d:,} listings) | Share of active vacancies posted > 180 days ago (`datumVlozeni`) |
 | **Active Age > 365 Days** | {share_older_365d} ({count_older_365d:,} listings) | Share of active vacancies posted > 365 days ago (`datumVlozeni`) |
 | **Expiry Date Coverage** | {expiry_coverage_ratio} ({active_with_expiry:,} listings) | Proportion of active vacancies with explicit expiration date |
-| **Active Past Stated Expiry** | {stale_active_count:,} listings ({staleness_ratio}) | Overdue vacancies still active in upstream register |
+| **Active Past Stated Expiry** | {stale_active_count:,} listings | Count of active vacancies whose stated expiry has passed |
 | **Schema Contract Integrity** | {drift_badge} | Structural validation of upstream response schema |
 
 {drift_section}
@@ -98,7 +98,6 @@ def generate_markdown_summary(
         expiry_coverage_ratio=f"{metrics.expiry_coverage_ratio:.2f}%",
         active_with_expiry=metrics.active_with_expiry,
         stale_active_count=metrics.stale_active_count,
-        staleness_ratio=f"{metrics.staleness_ratio:.2f}%",
         drift_badge=drift_badge,
         drift_section=drift_section,
     )
@@ -137,7 +136,6 @@ def generate_run_log(
         "expiry_coverage_ratio": metrics.expiry_coverage_ratio,
         "active_with_expiry": metrics.active_with_expiry,
         "stale_active_count": metrics.stale_active_count,
-        "staleness_ratio": metrics.staleness_ratio,
         "schema_drift_detected": metrics.schema_drift_detected,
         "drift_warnings": metrics.drift_warnings,
     }

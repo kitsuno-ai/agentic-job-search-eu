@@ -153,7 +153,7 @@ def run_freshness_pipeline(
     print(f"Age > 180d:      {metrics.share_older_180d}% ({metrics.count_older_180d} listings)")
     print(f"Age > 365d:      {metrics.share_older_365d}% ({metrics.count_older_365d} listings)")
     print(f"Expiry Coverage: {metrics.expiry_coverage_ratio}% ({metrics.active_with_expiry} listings)")
-    print(f"Expired Active:  {metrics.stale_active_count} listings")
+    print(f"Active Past Expiry: {metrics.stale_active_count} listings")
     print(f"Schema Drift:    {'YES' if metrics.schema_drift_detected else 'NO'}")
 
     if strict_drift and metrics.schema_drift_detected:

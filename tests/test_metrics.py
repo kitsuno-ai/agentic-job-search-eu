@@ -96,7 +96,7 @@ class TestMetrics(unittest.TestCase):
         self.assertAlmostEqual(evaluate_survival_at(curve, 20), 0.4000, places=4)
         self.assertAlmostEqual(evaluate_survival_at(curve, 30), 0.4000, places=4)
 
-    def test_staleness_calculation(self):
+    def test_expired_active_count(self):
         state = FreshnessState(slug="uradprace-cz", last_updated="2026-10-17", listings={})
         # 1 active unexpired
         state.listings["A1"] = ListingRecord("A1", "2026-10-01", "2026-10-17", "2026-10-01", "2026-10-31", "active")
@@ -110,7 +110,6 @@ class TestMetrics(unittest.TestCase):
         self.assertEqual(metrics.active_listings, 2)
         self.assertEqual(metrics.withdrawn_listings, 1)
         self.assertEqual(metrics.stale_active_count, 1)
-        self.assertEqual(metrics.staleness_ratio, 50.0)
 
     def test_kaplan_meier_left_truncation_delayed_entry(self):
         """

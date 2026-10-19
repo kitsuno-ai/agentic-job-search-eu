@@ -18,7 +18,6 @@ class FreshnessMetrics:
     survival_60d: float | None
     survival_90d: float | None
     stale_active_count: int
-    staleness_ratio: float
     schema_drift_detected: bool
     drift_warnings: list[str]
     share_older_90d: float = 0.0
@@ -168,8 +167,6 @@ def calculate_metrics(
     share_180d = round((count_older_180d / total_active) * 100, 2) if total_active else 0.0
     share_365d = round((count_older_365d / total_active) * 100, 2) if total_active else 0.0
     expiry_cov = round((active_with_expiry / total_active) * 100, 2) if total_active else 0.0
-    staleness_ratio = round((stale_active_count / total_active) * 100, 2) if total_active else 0.0
-
     # Kaplan-Meier survival with delayed entry
     survival_curve, median_days = compute_kaplan_meier(records, run_date_str)
 
@@ -196,7 +193,6 @@ def calculate_metrics(
         expiry_coverage_ratio=expiry_cov,
         active_with_expiry=active_with_expiry,
         stale_active_count=stale_active_count,
-        staleness_ratio=staleness_ratio,
         schema_drift_detected=bool(warnings),
         drift_warnings=warnings,
     )

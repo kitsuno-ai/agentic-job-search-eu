@@ -64,7 +64,9 @@ class TestCliAndPathGuard(unittest.TestCase):
             with open(summary_file, "r", encoding="utf-8") as f:
                 summary_content = f.read()
             self.assertIn("uradprace-cz", summary_content)
-            self.assertIn("50.00%", summary_content)  # 1 out of 2 is stale
+            self.assertIn("Expiry Date Coverage** | 100.00% (2 listings)", summary_content)
+            self.assertIn("Active Past Stated Expiry** | 1 listings", summary_content)
+            self.assertNotIn("staleness_ratio", summary_content)
 
     def test_path_confinement_security_logic(self):
         """Simulate GHA path boundary verification logic."""
