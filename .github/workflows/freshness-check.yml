@@ -1,0 +1,125 @@
+name: Daily Listing Freshness Tracker
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Run daily at 03:00 UTC
+  workflow_dispatch:      # Allow manual on-demand execution
+
+concurrency:
+  group: freshness-tracker-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check-freshness:
+    name: Track Freshness & Persistence
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        id: install
+        run: pip install pyyaml
+
+      - name: Run freshness pipeline (uradprace-cz)
+        id: freshness
+        run: |
+          python -m tools.freshness.cli --slug uradprace-cz
+
+      - name: Record pipeline outcome
+        if: ${{ always() }}
+        env:
+          PIPELINE_OUTCOME: ${{ steps.freshness.outcome }}
+          INSTALL_OUTCOME: ${{ steps.install.outcome }}
+          WORKFLOW_RUN_ID: ${{ github.run_id }}
+          WORKFLOW_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          mkdir -p reports/checks
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          run_id = os.environ["WORKFLOW_RUN_ID"]
+          attempt = os.environ["WORKFLOW_RUN_ATTEMPT"]
+          record = {
+              "slug": "uradprace-cz",
+              "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+              "workflow_run_id": run_id,
+              "workflow_run_attempt": int(attempt),
+              "pipeline_outcome": os.environ.get("PIPELINE_OUTCOME") or "skipped",
+              "install_outcome": os.environ.get("INSTALL_OUTCOME") or "skipped",
+          }
+          path = Path("reports/checks") / f"uradprace-cz-run-{run_id}-attempt-{attempt}.json"
+          path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+          PY
+
+      - name: Upload freshness reports and ephemeral logs
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: freshness-artifacts
+          path: reports/
+          retention-days: 90
+
+  commit-results:
+    name: Commit State and Summary
+    needs: check-freshness
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Download freshness artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: freshness-artifacts
+          path: reports/
+
+      - name: Clean ephemeral run logs before commit
+        run: |
+          # Keep git history compact: raw daily run logs are kept as 90-day GHA artifacts only
+          rm -rf reports/checks
+
+      - name: Verify path confinement and security boundary
+        run: |
+          echo "Verifying that changes are strictly confined to reports/freshness/..."
+          
+          # Check for any modified or untracked file outside reports/freshness/
+          VIOLATIONS=$(git status --porcelain | awk '{print $2}' | grep -v '^reports/freshness/' || true)
+          
+          if [ -n "$VIOLATIONS" ]; then
+            echo "SECURITY VIOLATION: Unexpected changes detected outside reports/freshness/:"
+            echo "$VIOLATIONS"
+            exit 1
+          fi
+          
+          echo "Security assertion passed: all changes are strictly within reports/freshness/."
+
+      - name: Commit and push updated state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add reports/freshness/
+          if git diff --staged --quiet; then
+            echo "No state or summary changes to commit."
+          else
+            git commit -m "chore(freshness): update uradprace-cz freshness report [skip ci]"
+            git push
+          fi

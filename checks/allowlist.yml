@@ -1,0 +1,17 @@
+# Governance allowlist for automated freshness checks.
+# Only sources explicitly listed here with license_posture 'aggregator-friendly'
+# or 'neutral' may be queried by automated workflows.
+# Sources with posture 'restricted', 'hostile', or 'unknown' are strictly forbidden.
+
+allowed_sources:
+  - slug: uradprace-cz
+    name: "Úřad práce ČR (Czech Labour Office)"
+    source_file: "sources/uradprace-cz.yml"
+    endpoint: "https://data.mpsv.cz/od/soubory/volna-mista/volna-mista.json"
+    data_format: "json"
+    update_frequency: "daily"
+    rationale: >-
+      Official Czech Ministry of Labour (MPSV) open data bulk feed.
+      Aggregator-friendly license posture, no authentication required,
+      published as public open data at data.mpsv.cz.
+    enabled: true
