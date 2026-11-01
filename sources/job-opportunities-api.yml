@@ -1,0 +1,19 @@
+name: Job Opportunities API (JOA)
+slug: job-opportunities-api
+url: https://jobopportunitiesapi.org
+countries: ["*"]
+languages: ["en"]
+focus: aggregator
+access_type: api
+api_docs_url: https://jobopportunitiesapi.org/docs
+requires_auth: true
+auth_type: api_key
+terms_url: https://jobopportunitiesapi.org/terms
+kitsuno_status: wishlist
+license_posture: neutral
+update_frequency: daily
+estimated_volume: 2000000
+rate_limits: Free Explore key, 1,000 records a month. Paid plans from 10,000 records a month.
+notes: |
+  Reads 70 recruiting platforms, 61 of them applicant tracking systems. Every row links to the employer's own application page. Every field carries its provenance (stated by the source or inferred). Closed roles are kept with a closure date. An MCP endpoint is available at https://api.jobopportunitiesapi.org/mcp.
+last_verified: 2026-11-01
