@@ -15,5 +15,5 @@ update_frequency: daily
 estimated_volume: 2000000
 rate_limits: Free Explore key, 1,000 records a month. Paid plans from 10,000 records a month.
 notes: |
-  Reads 70 recruiting platforms, 61 of them applicant tracking systems. Every row links to the employer's own application page. Every field carries its provenance (stated by the source or inferred). Closed roles are kept with a closure date. An MCP endpoint is available at https://api.jobopportunitiesapi.org/mcp.
+  Reads 70 recruiting platforms, 57 of them applicant tracking systems. Every row links to the employer's own application page. Every field carries its provenance (stated by the source or inferred). Closed roles are kept with a closure date. An MCP endpoint is available at https://api.jobopportunitiesapi.org/mcp.
 last_verified: 2026-11-01
