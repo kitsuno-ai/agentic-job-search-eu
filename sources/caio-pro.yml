@@ -1,0 +1,20 @@
+name: caio.pro
+slug: caio-pro
+url: https://caio.pro/jobs.html
+countries: ["*"]
+languages: [en]
+focus: aggregator
+access_type: api
+requires_auth: false
+auth_type: none
+kitsuno_status: wishlist
+license_posture: unknown
+update_frequency: unknown
+notes: |
+  Job board for AI and data leadership roles, including European listings.
+  GET https://caio.pro/api/jobs?limit=500&offset=0 returned JSON without
+  authentication when checked. Pagination uses limit and offset. The response
+  can contain fewer rows than the requested limit before the last page; stop
+  on an empty page rather than a short page. Confirm reuse terms and rate
+  limits with the operator before automated aggregation.
+last_verified: 2026-11-12
